@@ -32,4 +32,7 @@
 # jetbrains
 /.idea
 
+# docker
+docker/mysql57/data/*
+
 !.gitkeep
