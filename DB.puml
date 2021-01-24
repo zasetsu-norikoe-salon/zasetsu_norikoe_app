@@ -1,0 +1,84 @@
+@startuml
+'ユーザー'
+package devise {
+    entity users{
+        サロンメンバー
+        --
+        + ID
+        ..
+        email: String
+        password: String
+        name: String
+        gender: Enum[man, woman]
+        age: Enum[10s, 20s, 30s, 40s, 50s, 60, 70s]
+        years_of_work: Int
+        residence: String
+        employment_form: Enum[full_time, diff_full_time, side_biz, freelance, leave]
+        sns_url: String
+        setback_count: Int
+        created_at: Datetime
+        updated_at: Datetime
+        deleted_at: Datetime
+    }
+}
+
+package サロンメンバー検索アプリ {
+    'スキル'
+    entity skill_categories {
+        スキル属性
+        --
+        + ID
+        ..
+        name: String
+        created_at: Datetime
+        updated_at: Datetime
+        deleted_at: Datetime
+    }
+
+    '技術'
+    entity skill_sets {
+        スキルセット(使用言語, FW, ソフトなど)
+        --
+        + ID
+        ..
+        name: String
+        created_at: Datetime
+        updated_at: Datetime
+        deleted_at: Datetime
+    }
+
+    'ユーザーとスキルカテゴリーの中間テーブル'
+    entity user_and_skill_category_relationships {
+        ユーザーとスキル属性の中間テーブル
+        --
+        + ID
+        ..
+        # user_id [FK]
+        # skill_categories_id [FK]
+        level: Enum[junior, middle, veteran]
+        created_at: Datetime
+        updated_at: Datetime
+        deleted_at: Datetime
+    }
+
+    'ユーザーとスキルセットの中間テーブル'
+    entity user_and_skill_sets_relationships {
+        ユーザーとスキルセットの中間テーブル
+        --
+        + ID
+        ..
+        # user_id [FK]
+        # skill_sets_id [FK]
+        created_at: Datetime
+        updated_at: Datetime
+        deleted_at: Datetime
+    }
+}
+
+users --|{ user_and_skill_category_relationships
+skill_categories --|{ user_and_skill_category_relationships
+
+users --|{ user_and_skill_sets_relationships
+skill_sets --|{ user_and_skill_sets_relationships
+
+@enduml
