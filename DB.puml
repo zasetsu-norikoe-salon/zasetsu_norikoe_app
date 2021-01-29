@@ -10,12 +10,15 @@ package devise {
         password: String
         name: String
         gender: Enum[man, woman]
-        age: Enum[10s, 20s, 30s, 40s, 50s, 60, 70s]
-        years_of_work: Int
+        age: String
         residence: String
         employment_form: Enum[full_time, diff_full_time, side_biz, freelance, leave]
-        sns_url: String
-        setback_count: Int
+        github: String
+        twitter: String
+        facebook: String
+        instagram: String
+        portfolio_url: String
+        zasetsu_count: Int
         created_at: Datetime
         updated_at: Datetime
         deleted_at: Datetime
@@ -41,6 +44,7 @@ package サロンメンバー検索アプリ {
         --
         + ID
         ..
+        # skill_categories_id [FK]
         name: String
         created_at: Datetime
         updated_at: Datetime
@@ -55,7 +59,6 @@ package サロンメンバー検索アプリ {
         ..
         # user_id [FK]
         # skill_categories_id [FK]
-        level: Enum[junior, middle, veteran]
         created_at: Datetime
         updated_at: Datetime
         deleted_at: Datetime
@@ -69,6 +72,7 @@ package サロンメンバー検索アプリ {
         ..
         # user_id [FK]
         # skill_sets_id [FK]
+        level: Enum[junior, middle, veteran]
         created_at: Datetime
         updated_at: Datetime
         deleted_at: Datetime
@@ -80,5 +84,7 @@ skill_categories --|{ user_and_skill_category_relationships
 
 users --|{ user_and_skill_sets_relationships
 skill_sets --|{ user_and_skill_sets_relationships
+
+skill_categories --|{ skill_sets
 
 @enduml
