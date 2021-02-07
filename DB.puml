@@ -6,19 +6,19 @@ package devise {
         --
         + ID
         ..
-        email: String
-        password: String
-        name: String
-        gender: Enum[man, woman]
-        age: String
-        residence: String
-        employment_form: Enum[full_time, diff_full_time, side_biz, freelance, leave]
-        github: String
-        twitter: String
-        facebook: String
-        instagram: String
-        portfolio_url: String
-        zasetsu_count: Int
+        email [メールアドレス]: String, null: false
+        password [パスワード]: String, null: false
+        name [名前]: String, null: false
+        gender [性別]: Enum[man, woman, other, not], null: false
+        age [年代]: String
+        residence [居住地]: String
+        employment_form [就業形態]: Enum[full_time, diff_full_time, side_biz, freelance, leave], null: false
+        github [GitHubのアカウント]: String
+        twitter [Twitterのアカウント]: String
+        facebook[Facebookのアカウント]: String
+        instagram [Instagramのアカウント]: String
+        portfolio_url [ポートフォリオのURL]: String
+        zasetsu_count [挫折カウント]: Int
         created_at: Datetime
         updated_at: Datetime
         deleted_at: Datetime
@@ -32,9 +32,9 @@ package サロンメンバー検索アプリ {
         --
         + ID
         ..
-        name: String
-        created_at: Datetime
-        updated_at: Datetime
+        name [スキル属性]: String, null: false
+        created_at: Datetime, null: false
+        updated_at: Datetime, null: false
         deleted_at: Datetime
     }
 
@@ -46,8 +46,8 @@ package サロンメンバー検索アプリ {
         ..
         # skill_categories_id [FK]
         name: String
-        created_at: Datetime
-        updated_at: Datetime
+        created_at: Datetime, null: false
+        updated_at: Datetime, null: false
         deleted_at: Datetime
     }
 
@@ -57,10 +57,10 @@ package サロンメンバー検索アプリ {
         --
         + ID
         ..
-        # user_id [FK]
-        # skill_categories_id [FK]
-        created_at: Datetime
-        updated_at: Datetime
+        # user_id [FK], null: false
+        # skill_categories_id [FK], null: false
+        created_at: Datetime, null: false
+        updated_at: Datetime, null: false
         deleted_at: Datetime
     }
 
@@ -70,11 +70,11 @@ package サロンメンバー検索アプリ {
         --
         + ID
         ..
-        # user_id [FK]
-        # skill_sets_id [FK]
-        level: Enum[junior, middle, veteran]
-        created_at: Datetime
-        updated_at: Datetime
+        # user_id [FK], null: false
+        # skill_sets_id [FK], null: false
+        level [スキルレベル]: Enum[junior, middle, veteran], null: false
+        created_at: Datetime, null: false
+        updated_at: Datetime, null: false
         deleted_at: Datetime
     }
 }
