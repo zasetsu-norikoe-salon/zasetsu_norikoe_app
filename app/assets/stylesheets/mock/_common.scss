@@ -1,0 +1,128 @@
+// 定義--------------------------
+  // 色
+  $main-color:#FDC32D;
+  $bg-color:#FDFCD3;
+  $sub-color:#9D6907;
+  $level-color:#68B77E;
+  $txt-color-white:#FCF7F7;
+
+  // フォントサイズ
+  $DEFAULT_FONT_SIZE: 62.5%;
+
+  // フォント
+  $DEFAULT_FONT_FAMILY: 'ヒラギノ丸ゴ ProN', sans-serif;
+
+
+  // メディアクエリ
+  $MEDIA_TAB: 1024px;
+  $MEDIA_SP: 768px;
+
+	//z-index
+	$z-index:(
+		header:999,
+
+	);
+
+// 定義--------------------------
+
+
+// reset.scss読み込み--------------------------
+@import  "_reset";
+// reset.scss読み込み--------------------------
+
+
+// 共通パーツ--------------------------
+html,body{
+  font-size: $DEFAULT_FONT_SIZE;
+  font-family: $DEFAULT_FONT_FAMILY;
+	background: $bg-color;
+}
+
+.inner{
+  max-width: 1002px;
+  width: 90%;
+  margin: 0 auto; 
+}
+
+.header{
+  position: fixed;
+  width: 100%;
+  height: 88px;
+  padding: 27px 0 33px;
+  background-color: $main-color;
+  border: 3px solid $sub-color;
+	z-index: map-get($z-index,header);
+
+  &__container{
+    max-width: 1218px;
+    width: 95%;
+		height: 100%;
+    margin: 0 auto; 
+  }
+
+  &__ttl{
+    font-size: 2rem;
+    font-family:'Hannotate SC', sans-serif ;
+    color: $txt-color-white;
+  }
+}
+
+.section{
+
+  &__ttl{
+    font-size: 2rem;
+    font-weight: normal;
+    color: #666666;
+  }
+}
+
+.button{
+  display: inline-block;
+  min-width: 160px;
+  height: 65px;
+  line-height: calc(65px - (3px * 2));
+  padding: 0 14px;
+  text-align: center;
+  background-color: $main-color;
+  box-shadow: 4px 8px 8px #A7600EF4;
+  border: 3px solid $sub-color;
+  border-radius: 15px;
+  font-size: 2rem;
+  color: $txt-color-white;
+
+}
+
+.pager{
+	margin-top: 157px;
+	padding-bottom: 103px;
+	&__items{
+		display: flex;
+		justify-content: center;
+	}
+
+	&__item{
+		width: 53px;
+		height: 53px;
+		line-height: 47px;
+		background: #F8F8F5;
+		border: 3px solid $sub-color;
+		border-radius: 50%;
+		text-align: center;
+		
+
+		&.is-active{
+			background: $main-color;
+
+			.pager__link{
+				color:#fff;
+			}
+		}
+	}
+
+	&__link{
+		color: #666;
+		font-size: 2rem;
+		text-decoration: none;
+	}
+}
+// 共通パーツ--------------------------
