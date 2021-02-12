@@ -36,3 +36,4 @@
 docker/mysql57/data/*
 
 !.gitkeep
+.DS_Store
