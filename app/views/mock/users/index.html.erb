@@ -1,2 +1,529 @@
-<h1>Mock::Users#index</h1>
-<p>Find me in app/views/mock/users/index.html.erb</p>
+ <!--headerに下記linkタグを追加していただきたいです-->
+ <!-- font awesome CSS -->
+ <!-- <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet"> -->
+
+
+
+ 
+<body>
+  <header class="header">
+    <div class="header__container">
+			<h1 class="header__ttl">挫折乗り越えサロンMember Site</h1>
+			<form id="" action="" method="get" class="header__search">
+			<input type="text" id="" name="" placeholder="Slack名、言語などを入力してください" class="header__searchArea">
+			<button type="submit" id="" class="header__searchBtn"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <section class="search">
+      <div class="result_container inner">
+        <div class="section__head">
+          <h2 class="section__ttl">メンバーをさがす</h2>
+        </div>
+        <div class="search__detail">
+        	<a href="#" class="button">プロフィールを詳しく見る</a>
+	        <a href="#" class="button">さがす</a>
+        </div>
+
+			</div>
+    </section>
+
+    <section class="result">
+      <div class="result_container inner">
+        <div class="section__head">
+          <h2 class="section__ttl">検索結果</h2>
+          <p class="result__numbers">
+            <span class="result__total">25</span>人中<span class="result__firstNum">1</span>-<span class="result__lastNum">5</span>人表示<!--# 数字をspanで囲っているのは関数を挿入する際に使いやすいかなと思って入れています。CSSは特に指定していないのでバックエンド側で必要でなければspanは削除可能です。 -->
+          </p>						
+        </div><!-- section__head -->
+
+        <div class="result__content">
+
+					<div class="result__card">
+						
+						<div class="result__prof"><!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+							<dl class="result__data">
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">Slack名</dt>
+									<dd class="result__dataCnt">ぎょうざ</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">性別</dt>
+									<dd class="result__dataCnt">女</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">世代</dt>
+									<dd class="result__dataCnt">小室世代</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">住んでる所</dt>
+									<dd class="result__dataCnt">東京</dd>
+								</div>
+							</dl>
+						</div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+
+						<div class="result__skill">		<!-- スキル(アコーディオンメニュー）の部分 -->
+							
+						
+							<input id="check1-1" class="result__check" type="checkbox">
+							<label class="result__label" for="check1-1">デザイン</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+							<input id="check1-2" class="result__check" type="checkbox">
+							<label class="result__label" for="check1-2">Web開発</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+										</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+							<input id="check1-3" class="result__check" type="checkbox">
+							<label class="result__label" for="check1-3">動画編集</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+						</div><!-- スキル(アコーディオンメニュー）の部分 -->
+
+						<p class="result__txt">この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。(120文字)</p>
+						<a href="#" class="result__btn button">プロフィールを詳しく見る</a>
+					</div><!-- result__card -->	
+
+					<div class="result__card">
+							
+						<div class="result__prof"><!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+							<dl class="result__data">
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">Slack名</dt>
+									<dd class="result__dataCnt">ぎょうざ</dd>
+									</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">性別</dt>
+									<dd class="result__dataCnt">女</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">世代</dt>
+									<dd class="result__dataCnt">小室世代</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">住んでる所</dt>
+									<dd class="result__dataCnt">東京</dd>
+								</div>
+							</dl>
+						</div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+
+						<div class="result__skill">		<!-- スキル(アコーディオンメニュー）の部分 -->
+						
+							<input id="check2-1" class="result__check" type="checkbox">
+							<label class="result__label" for="check2-1">デザイン</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+							<input id="check2-2" class="result__check" type="checkbox">
+							<label class="result__label" for="check2-2">Web開発</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+										</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+							<input id="check2-3" class="result__check" type="checkbox">
+							<label class="result__label" for="check2-3">動画編集</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+						</div><!-- スキル(アコーディオンメニュー）の部分 -->
+
+						<p class="result__txt">この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。(120文字)</p>
+						<a href="#" class="result__btn button">プロフィールを詳しく見る</a>
+					</div><!-- result__card -->	
+
+					<div class="result__card">
+							
+						<div class="result__prof"><!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+							<dl class="result__data">
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">Slack名</dt>
+									<dd class="result__dataCnt">ぎょうざ</dd>
+									</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">性別</dt>
+									<dd class="result__dataCnt">女</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">世代</dt>
+									<dd class="result__dataCnt">小室世代</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">住んでる所</dt>
+									<dd class="result__dataCnt">東京</dd>
+								</div>
+							</dl>
+						</div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+
+						<div class="result__skill">		<!-- スキル(アコーディオンメニュー）の部分 -->
+							
+						
+							<input id="check3-1" class="result__check" type="checkbox">
+							<label class="result__label" for="check3-1">デザイン</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+							<input id="check3-2" class="result__check" type="checkbox">
+							<label class="result__label" for="check3-2">Web開発</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+										</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+							<input id="check3-3" class="result__check" type="checkbox">
+							<label class="result__label" for="check3-3">動画編集</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+						</div><!-- スキル(アコーディオンメニュー）の部分 -->
+
+						<p class="result__txt">この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。(120文字)</p>
+						<a href="#" class="result__btn button">プロフィールを詳しく見る</a>
+					</div><!-- result__card -->	
+
+					<div class="result__card">
+									
+						<div class="result__prof"><!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+							<dl class="result__data">
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">Slack名</dt>
+									<dd class="result__dataCnt">ぎょうざ</dd>
+									</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">性別</dt>
+									<dd class="result__dataCnt">女</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">世代</dt>
+									<dd class="result__dataCnt">小室世代</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">住んでる所</dt>
+									<dd class="result__dataCnt">東京</dd>
+								</div>
+							</dl>
+						</div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+
+						<div class="result__skill">		<!-- スキル(アコーディオンメニュー）の部分 -->
+							
+						
+							<input id="check4-1" class="result__check" type="checkbox">
+							<label class="result__label" for="check4-1">デザイン</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+							<input id="check4-2" class="result__check" type="checkbox">
+							<label class="result__label" for="check4-2">Web開発</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+										</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+							<input id="check4-3" class="result__check" type="checkbox">
+							<label class="result__label" for="check4-3">動画編集</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+						</div><!-- スキル(アコーディオンメニュー）の部分 -->
+
+						<p class="result__txt">この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。(120文字)</p>
+						<a href="#" class="result__btn button">プロフィールを詳しく見る</a>
+					</div><!-- result__card -->	
+				
+					<div class="result__card">
+						
+						<div class="result__prof"><!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+							<dl class="result__data">
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">Slack名</dt>
+									<dd class="result__dataCnt">ぎょうざ</dd>
+									</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">性別</dt>
+									<dd class="result__dataCnt">女</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">世代</dt>
+									<dd class="result__dataCnt">小室世代</dd>
+								</div>
+								<div class="result__dataBox">
+									<dt class="result__dataTtl">住んでる所</dt>
+									<dd class="result__dataCnt">東京</dd>
+								</div>
+							</dl>
+						</div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+
+						<div class="result__skill">		<!-- スキル(アコーディオンメニュー）の部分 -->
+							
+						
+							<input id="check5-1" class="result__check" type="checkbox">
+							<label class="result__label" for="check5-1">デザイン</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+							<input id="check5-2" class="result__check" type="checkbox">
+							<label class="result__label" for="check5-2">Web開発</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+										</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+							<input id="check5-3" class="result__check" type="checkbox">
+							<label class="result__label" for="check5-3">動画編集</label>
+							
+							<div class="result__skills">	<!-- アコーディオンメニューの中身 -->
+								<dl class="result__skilldata">
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">Photoshop</dt>
+										<dd class="result__skillCnt">ベテラン</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">illustrator</dt>
+										<dd class="result__skillCnt">初心者</dd>
+									</div>
+									<div class="result__skillBox">
+										<dt class="result__skillTtl">figma</dt>
+										<dd class="result__skillCnt">勉強中</dd>
+									</div>
+								</dl>
+							</div><!-- アコーディオンメニューの中身 -->
+
+
+						</div><!-- スキル(アコーディオンメニュー）の部分 -->
+
+						<p class="result__txt">この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。この文章は、ダミーの文章です。(120文字)</p>
+						<a href="#" class="result__btn button">プロフィールを詳しく見る</a>
+					</div><!-- result__card -->	
+
+				</div><!-- result__content -->
+			</div>
+
+    </section>
+		<div class="pager">
+				<ul class="pager__items">
+						<li class="pager__item  pagerItem is-active"><a href="#" class="pager__link">1</a></li>
+						<li class="pager__item  pagerItem"><a href="#" class="pager__link">2</a></li>
+						<li class="pager__item  pagerItem"><a href="#" class="pager__link">3</a></li>
+						<li class="pager__item  pagerItem"><a href="#" class="pager__link">4</a></li>
+						<li class="pager__item  pagerItem"><a href="#" class="pager__link">5</a></li>
+				</ul>
+		</div>
+  </main>
+
+
+</body>
