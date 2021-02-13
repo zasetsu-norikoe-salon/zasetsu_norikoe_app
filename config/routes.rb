@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :mock do
+    get 'users/login'
     get 'users/index'
     get 'users/show'
   end

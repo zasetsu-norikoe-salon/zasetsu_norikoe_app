@@ -1,0 +1,46 @@
+<body>
+	<header class="header">
+		<div class="header__container">
+			<h1 class="header__ttl">挫折乗り越えサロンMember Site</h1>
+		</div>
+	</header>
+
+	<main>
+		<section class="login">
+			<h2 class="login__title">挫折乗り越えサロン<span>Member Site</span></h2>
+			<form class="login__form" id="" action="" >
+				<input class="login__email" type="email" name="" placeholder="メールアドレス">
+				<input class="login__pass" type="password" name="" placeholder="パスワード">
+				<input class="login__btn button" type="submit" name="" value="ログイン">
+			</form>
+		</section><!-- /.login -->
+
+		<p class="message">サロンMemberひとりひとりの自己紹介サイトです。ゆっくりしていってください(^o^)</p>
+	</main>
+
+	<script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
+	<script>
+		bubbly({
+			colorStart: "#FDFCD3",
+			colorStop: "#FDFCD3",
+			blur: 1,
+			compose: "source-over",
+			bubbleFunc: () => `hsla(${Math.random() * 80 + 20}, 95%, 45%, .35)`
+
+			/*
+			hsla(色相(Hue),彩度(Saturation),輝度(Lightness),透明度)
+			${Math.random() * 80 + 20} 色相20から100の間でランダムとなります
+
+			animate - アニメーションするか否か
+			blur - ぼかし処理の度合い
+			bubbleFunc - 泡の色彩
+			bubbles - 泡の数
+			canvas - 描画する要素
+			colorStart - 背景色のグラデーション（スタート）
+			colorStop - 背景色のグラデーション（エンド）
+			compose - 要素の合成方法
+			shadowColor - 泡の影
+			*/
+		});
+	</script>
+</body>
