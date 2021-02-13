@@ -36,3 +36,6 @@
 docker/mysql57/data/*
 
 !.gitkeep
+
+# MacOS の隠しファイル
+.DS_Store
