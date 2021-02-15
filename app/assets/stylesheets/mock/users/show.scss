@@ -5,27 +5,27 @@
 // header--------------------------
 
 .main {
-	&__detail{
 		width: 100%;
-		height: 209px;
+		height: 789px;
 		margin-top: 20px;
 		padding: 20px;
-		background: #F4F8FC;
-		border: 1px solid #707070;
-		border-radius: 28px;
-	}
 }
-
 
 .result {
   &__contents {
+    height: 789px;
+    background: #fff;
+    margin-top: 45px;
+    padding: 23px 40px;
+    border-radius: 45px;
+    box-shadow: 0 3px 6px #00000029;
+  }
+
+  &__contentsBox {
+  padding-bottom: 5%;
   display: flex;
   justify-content: space-around;
-  margin-top: 45px;
-  padding: 23px 40px;
-  background: #fff;
-  border-radius: 45px;
-  box-shadow: 0 3px 6px #00000029;
+  position: relative;
   }
 
   &__box {
@@ -33,5 +33,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  &__contentsBox::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    display: inline-block;
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+		border: 1px dashed $sub-color;
   }
 }
