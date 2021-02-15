@@ -12,28 +12,28 @@
   }
 
   &__search{
-    position:relative; 
+    position:relative;
     max-width:360px;
-    width: 100%;	
-    height: 40px; 
+    width: 100%;
+    height: 40px;
     margin: 0 0 0 117px;
   }
   &__searchArea{
     position:relative;
     width: 100%;
-    padding:12px 50px 12px 31px; 
+    padding:12px 50px 12px 31px;
     border: 1px solid #AFADAD;
     border-radius:15px;
     box-shadow: 0 3px 6px #00000029;
     outline:0;
-    background:#fff;	
+    background:#fff;
     font-size: 1.6rem;
     &::placeholder{
       color: #BDC3C7;
     }
   }
   &__searchBtn{
-    position:absolute; 
+    position:absolute;
     right: 12px;/*アイコン左右の位置調整*/
     top:50%;
     transform: translateY(-50%);
@@ -42,7 +42,7 @@
     background: none;
     font-size:2rem;/*アイコンサイズ*/
     color:#666;
-    
+
     &:hover{
       color:#7fbfff;
     }
@@ -87,7 +87,7 @@
   &__card{
     position: relative;
     display: flex;
-    margin-top: 45px; 
+    margin-top: 45px;
     padding: 23px 40px;
 		background: #fff;
     border-radius: 45px;
@@ -119,7 +119,7 @@
 		font-size: 2rem;
   }
   // 属性------------------------
-  
+
 
   // スキル------------------------
   &__check{
@@ -142,7 +142,7 @@
     font-size: 2rem;
     text-align: center;
     color: $sub-color;
-    
+
     &:after{
       content: '＋';
       position: absolute;
@@ -203,7 +203,7 @@
 		font-size: 1.2rem;
 		color: $txt-color-white;
 		text-align: center;
-		
+
 	}
   // スキル　アコーディオンで見える部分------------------------
 
