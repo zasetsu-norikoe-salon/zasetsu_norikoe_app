@@ -11,7 +11,8 @@ services:
     ports:
       - '3000:3000'
   db:
-    image: mysql:5.7
+    # TODO: M1 Mac Docker preview版ではTAGでMysqlのイメージを指定するとエラーになるので、DIGESTで指定してあります。
+    image: mysql:5.7@sha256:b3b2703de646600b008cbb2de36b70b21e51e7e93a7fca450d2b08151658b2dd
     container_name: mysql57
     volumes:
       - ./docker/mysql57/data:/var/lib/mysql #データの永続化
