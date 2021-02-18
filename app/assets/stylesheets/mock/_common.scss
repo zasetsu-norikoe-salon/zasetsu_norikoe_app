@@ -39,9 +39,9 @@ html,body{
 }
 
 .inner{
-  max-width: 1002px;
+  max-width: 1200px;
   width: 90%;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .header{
@@ -57,7 +57,7 @@ html,body{
     max-width: 1218px;
     width: 95%;
 		height: 100%;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
 
   &__ttl{
@@ -118,7 +118,7 @@ html,body{
 
 	&Item.is-active{
 		background: $main-color;
-	
+
 		.pager__link{
 			color:#fff;
 		}

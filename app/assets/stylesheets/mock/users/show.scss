@@ -10,17 +10,42 @@
 		padding: 10px;
 }
 
+.section__sub {
+  width: 30%;
+  color: #666;
+  position: relative;
+
+  & i {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+  }
+
+  & p {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+  }
+}
+
+.my-gray {
+  color: #666}
+
+.result_contain {
+  display: flex;
+}
+
 .result {
   &__contents {
     height: 789px;
     background: #fff;
-    padding: 23px 40px;
+    padding: 23px 10px;
     border-radius: 45px;
     box-shadow: 0 3px 6px #00000029;
   }
 
   &__contentsBox {
-  padding-bottom: 5%;
+  padding-bottom: 1%;
   display: flex;
   justify-content: space-around;
   position: relative;
@@ -44,4 +69,81 @@
     justify-content: space-between;
     font-size: 1.4rem;
   }
+
+  &__text  h2 {
+    font-size: 2.75rem;
+    text-align: center;
+  }
+
+  &__sns--item {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__button {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+}
+
+
+.result__sns {
+
+  &--twitter {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color:#44accc;
+    position: relative;
+
+    & i {
+      position: absolute;
+      font-size: 1.5rem;
+      top: 30%;
+      left: 28%;
+    }
+  }
+
+  &--facebook {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color:#3462c7;
+    position: relative;
+
+    & i {
+      position: absolute;
+      font-size: 2rem;
+      top: 20%;
+      left: 35%;
+    }
+  }
+
+  &--instagram {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #292cf8, rgb(228, 59, 250));
+    position: relative;
+
+    & i {
+      position: absolute;
+      font-size: 2.5rem;
+      top: 10%;
+      left: 15%;
+    }
+  }
+}
+
+.fa-twitter {
+  color: white;
+}
+
+.fa-facebook-f {
+  color: white;
+}
+
+.fa-instagram  {
+  color: white;
 }

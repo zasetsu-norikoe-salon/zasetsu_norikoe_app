@@ -63,6 +63,12 @@
 		border: 1px solid #707070;
 		border-radius: 28px;
 	}
+
+  &__btn {
+    position: absolute;
+    top: 510px;
+    right: 210px;
+  }
 }
 
 // search--------------------------
@@ -96,7 +102,7 @@
 
   // 属性------------------------
 	&__prof{
-		max-width: 200px;
+		max-width: 250px;
 		width: 40%;
 	}
 
@@ -104,19 +110,19 @@
 		display: flex;
 
 		&:not(:first-child){
-			margin-top: 40px;
+			margin-top: 20px;
 		}
 	}
 
 	&__dataTtl{
-		font-size: 2rem;
+		font-size: 1.5rem;
 		color: $sub-color;
 	}
 
 	&__dataCnt{
 		display: inline-block;
 		margin-left: 20px;
-		font-size: 2rem;
+		font-size: 1.5rem;
   }
   // 属性------------------------
 
@@ -210,7 +216,7 @@
 	// フリーテキストエリア------------------------
   &__txt{
 		max-width: 234px;
-		width: 25%;
+		width: 50%;
 		max-height: 300px;
 		margin-left: 17px;
 		padding: 15px;

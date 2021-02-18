@@ -2,6 +2,7 @@
 <p>Find me in app/views/mock/users/show.html.erb</p>
 <!-- font awesome CSS -->
 <!-- <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet"> -->
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 <body>
   <header class="header">
     <div class="header__container">
@@ -10,12 +11,13 @@
   </header>
 
   <section class="search">
-  <div class="result_container inner">
+  <div class="result_contain inner">
     <div class="section__head">
       <h2 class="section__ttl">プロフィール詳細</h2>
     </div>
-    <div>
-      <p>・・・・・・・・・これまでの挫折回数（笑）</p>
+    <div class="section__sub">
+      <i class="far fa-dizzy fa-4x my-gray"></i>
+      <p>・・・・・・・・これまでの挫折回数（笑）</p>
     </div>
   </div>
 
@@ -109,7 +111,6 @@
               <dt class="result__dataTtl">稼働可能時間帯</dt>
               <dd class="result__dataCnt">平日19時以降</dd>
             </div>
-
           </dl>
         </div>
 
@@ -144,10 +145,12 @@
               <h2>＼ Follow me ／</h2>
             </div>
             <div class="result__sns">
-              <p>Twitter</p>
-              <p>Facebook</p>
-              <p>Instagram</p>
-              <p>github</p>
+              <ul class="result__sns--item">
+                <li class ="result__sns--twitter"><i class="fab fa-twitter"></i></li>
+                <li class="result__sns--facebook"><i class="fab fa-facebook-f"></i></li>
+                <li class="result__sns--instagram"><i class="fab fa-instagram"></i></li>
+                <li class="result__sns--github"><i class="fab fa-github fa-2x"></i></li>
+              </ul>
             </div>
             <div>
               <a href="#" class="result__button button">ポートフォリオ</a>
