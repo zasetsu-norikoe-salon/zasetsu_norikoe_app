@@ -62,8 +62,14 @@
 		background: #F4F8FC;
 		border: 1px solid #707070;
 		border-radius: 28px;
+    position: relative;
 	}
 
+  &__btn {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+  }
 }
 
 // search--------------------------
