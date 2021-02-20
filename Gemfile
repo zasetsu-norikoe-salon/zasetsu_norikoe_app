@@ -49,7 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # rubocop
+  # Ruby static code analyzer (a.k.a. linter) and code formatter.
   gem 'rubocop', require: false
 end
 
