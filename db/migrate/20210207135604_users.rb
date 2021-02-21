@@ -1,8 +1,8 @@
 class Users < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.string :email, null:false,comment:'メールアドレス'
-      t.string :password, null:false, comment:'パスワード'
+      t.string :email, null:false, comment:'メールアドレス'
+      t.string :password, null:false,comment:'パスワード'
       t.string :name, null:false,comment:'slack名'
       t.integer :gender, null:false, default:1, comment:'性別'
       t.string :age, comment:'世代'
@@ -23,6 +23,6 @@ class Users < ActiveRecord::Migration[5.2]
       t.string :port_url, comment:'ポートフォリオURL'
       t.datetime :deleted_at,comment:'削除日時'
       t.timestamps 
-      t.timestamps 
+    end
   end
 end
