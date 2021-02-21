@@ -6,7 +6,7 @@ class Users < ActiveRecord::Migration[5.2]
       t.string :name, null: false, comment: 'slack名'
       t.integer :gender, null: false, default: 1, comment: '性別'
       t.string :age, comment: '世代'
-      t.integer :employment_form, null:false, default: 1, comment: '就業形態'
+      t.integer :employment_form, null: false, default: 1, comment: '就業形態'
       t.string :prefecture, comment: '住んでる都道府県'
       t.string :available_work_time, comment: '稼働可能時間帯'
       t.string :qualification, comment: '資格取得'
@@ -23,7 +23,7 @@ class Users < ActiveRecord::Migration[5.2]
       t.string :port_url, comment: 'ポートフォリオURL'
       t.datetime :deleted_at, comment: '削除日時'
 
-      t.timestamps 
+      t.timestamps
     end
   end
 end
