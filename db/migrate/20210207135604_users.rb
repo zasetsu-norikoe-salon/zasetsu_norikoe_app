@@ -23,7 +23,7 @@ class Users < ActiveRecord::Migration[5.2]
       t.string :port_url, comment: 'ポートフォリオURL'
       t.datetime :deleted_at, comment: '削除日時'
 
-      t.timestamps 
+      t.timestamps
     end
   end
 end
