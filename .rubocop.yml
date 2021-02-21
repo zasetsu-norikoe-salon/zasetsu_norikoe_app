@@ -1,0 +1,25 @@
+inherit_from: .rubocop_todo.yml
+
+# rubocop関連のgemをrequire
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.6.6
+  TargetRailsVersion: 5.2.4
+  # rubocopアップデート時に、新ルールを適用しない
+  NewCops: disable
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+
+Rails:
+  Enabled: true
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false

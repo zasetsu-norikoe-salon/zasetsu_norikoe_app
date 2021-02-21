@@ -1,7 +1,11 @@
-class Mock::UsersController < ApplicationController
-  def login; end
+# frozen_string_literal: true
 
-  def index; end
+module Mock
+  class UsersController < ApplicationController
+    def login; end
 
-  def show; end
+    def index; end
+
+    def show; end
+  end
 end
