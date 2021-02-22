@@ -16,6 +16,8 @@ AllCops:
     - 'bin/**/*'
     - 'tmp/**/*'
     - 'node_modules/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
 
 Rails:
   Enabled: true
