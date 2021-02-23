@@ -18,6 +18,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'db/schema.rb'
     - 'db/migrate/*'
+    - 'config/**/*'
 
 Rails:
   Enabled: true
