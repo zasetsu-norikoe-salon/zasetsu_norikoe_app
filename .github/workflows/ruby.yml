@@ -20,7 +20,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6.6
-    - name: bundler setup
+    - name: Run Rubocop
       run: |
-        gem install rubocop
+        gem install rubocop rubocop-performance rubocop-rails rubocop-rspec
         rubocop
