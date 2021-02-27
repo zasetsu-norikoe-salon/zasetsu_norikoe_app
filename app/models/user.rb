@@ -10,8 +10,4 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :employment_form, presence: true
   validates :zasetsu_count, presence: true
-  
-
-
-
 end
