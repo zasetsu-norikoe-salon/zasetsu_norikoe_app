@@ -61,4 +61,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # FactoryBotのメソッドを使用時、名前空間を省略する
+  config.include FactoryBot::Syntax::Methods
 end
