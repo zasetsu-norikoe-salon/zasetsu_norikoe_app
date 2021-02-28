@@ -26,7 +26,8 @@ jobs:
 
   rspec:
     # ジョブを実行する仮想マシンを選択（ubuntu/macOS/Windows)
-    runs-on: ubuntu-latest
+    # TODO: 2021年2月28日現在、ubuntu-latest(18.04)だとmysqlが起動できないエラーになるので、16.04を使用
+    runs-on: ubuntu-16.04
     env:
       RAILS_ENV: test
       DB_HOST: 127.0.0.1
@@ -38,7 +39,7 @@ jobs:
           - 3306:3306
         env:
           MYSQL_USER: root
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes # パスワードを空にする
+          MYSQL_ROOT_PASSWORD: password
           BIND-ADDRESS: 0.0.0.0 # 全ての接続をを許可する
     steps:
       - uses: actions/checkout@v2
