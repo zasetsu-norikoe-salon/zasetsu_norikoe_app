@@ -13,7 +13,6 @@ jobs:
   rubocop:
     # ジョブを実行する仮想マシンを選択（ubuntu/macOS/Windows)
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -24,3 +23,42 @@ jobs:
       run: |
         gem install rubocop rubocop-performance rubocop-rails rubocop-rspec
         rubocop
+
+  rspec:
+    # ジョブを実行する仮想マシンを選択（ubuntu/macOS/Windows)
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+    services:
+      db:
+        image: mysql5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes # パスワードを空にする
+          BIND-ADDRESS: 0.0.0.0 # 全ての接続をを許可する
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6.6
+      - name: Cache gems
+        uses: actions/cache@preview
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+      - name: bundle install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+      - name: DB Setup
+        run: |
+          bundle exec rails db:setup
+      - name: Run RSpec
+        run: bundle exec rspec
