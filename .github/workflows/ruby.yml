@@ -33,7 +33,7 @@ jobs:
       DB_PORT: 3306
     services:
       db:
-        image: mysql5.7
+        image: mysql:5.7
         ports:
           - 3306:3306
         env:
