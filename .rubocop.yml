@@ -26,3 +26,8 @@ Rails:
 # 日本語コメントを許可
 Style/AsciiComments:
   Enabled: false
+
+Metrics/BlockLength:
+  CountComments: false
+  Exclude:
+    - 'spec/**/*'

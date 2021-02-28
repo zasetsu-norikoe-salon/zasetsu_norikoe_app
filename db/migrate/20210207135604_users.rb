@@ -2,7 +2,7 @@ class Users < ActiveRecord::Migration[5.2]
   def change
     create_table :users, comment: 'ユーザーデータ' do |t|
       t.string :email, null: false, comment: 'メールアドレス'
-      t.string :password, null: false, comment: 'パスワード'
+      t.string :encrypted_password, null: false, default: '', comment: 'パスワード'
       t.string :name, null: false, comment: 'slack名'
       t.integer :gender, null: false, default: 1, comment: '性別'
       t.string :age, comment: '世代'
@@ -23,7 +23,18 @@ class Users < ActiveRecord::Migration[5.2]
       t.string :port_url, comment: 'ポートフォリオURL'
       t.datetime :deleted_at, comment: '削除日時'
 
+      ## Recoverable
+      t.string   :reset_password_token
+      t.datetime :reset_password_sent_at
+
+      ## Rememberable
+      t.datetime :remember_created_at
+
       t.timestamps
     end
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end
