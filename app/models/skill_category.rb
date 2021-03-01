@@ -1,0 +1,2 @@
+class SkillCategory < ApplicationRecord
+end
