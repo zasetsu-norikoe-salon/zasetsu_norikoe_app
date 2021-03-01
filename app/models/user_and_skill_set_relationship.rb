@@ -1,0 +1,2 @@
+class UserAndSkillSetRelationship < ApplicationRecord
+end
