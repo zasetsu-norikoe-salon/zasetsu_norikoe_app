@@ -5,8 +5,8 @@ FactoryBot.define do
     sequence(:email) { Faker::Internet.free_email }
     sequence(:password) { 'password' }
     sequence(:name) { Faker::Name.first_name }
-    sequence(:gender) { Faker::Number.within(range: 1..4) }
-    sequence(:employment_form) { Faker::Number.within(range: 1..5) }
+    sequence(:gender) { Faker::Number.within(range: 1..4) } # TODO: Enumを設定したら合わせて変更する
+    sequence(:employment_form) { Faker::Number.within(range: 1..5) } # TODO: Enumを設定したら合わせて変更する
     sequence(:zasetsu_count) { Faker::Number.digit }
   end
 end
