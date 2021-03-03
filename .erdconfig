@@ -1,0 +1,24 @@
+# gem rails-erd の設定ファイル
+attributes:
+  - content
+  - foreign_keys
+  - primary_keys
+  - inheritance
+  - timestamps
+disconnected: true
+filename: ER_Diagram
+filetype: pdf
+indirect: true
+inheritance: false
+markup: true
+polymorphism: false
+sort: false
+warn: true
+exclude:
+  - ActiveRecord::InternalMetadata
+  - ActiveRecord::SchemaMigration
+only: null
+only_recursion_depth: null
+prepend_primary: false
+cluster: false
+splines: spline
