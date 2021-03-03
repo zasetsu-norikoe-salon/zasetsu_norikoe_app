@@ -7,7 +7,7 @@ attributes:
   - timestamps
 disconnected: true
 filename: ER_Diagram
-filetype: pdf
+filetype: png
 indirect: true
 inheritance: false
 markup: true

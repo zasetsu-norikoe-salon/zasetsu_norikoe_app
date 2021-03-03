@@ -53,5 +53,5 @@ $ docker-compose exec app bundle exec rubocop
   - [RuboCopチートシート](https://qiita.com/tanish-kr/items/abb881c098b3df3f9871)
   
 ## ER図
-[ER_Diagram](ER_Diagram.pdf)
+![ER_Diagram](ER_Diagram.png)
     
