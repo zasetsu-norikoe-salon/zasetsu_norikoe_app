@@ -51,4 +51,7 @@ $ docker-compose exec app bundle exec rubocop
 3. 修正する
 - エラーの内容はこちらを参考にしてください。
   - [RuboCopチートシート](https://qiita.com/tanish-kr/items/abb881c098b3df3f9871)
+  
+## ER図
+![ER_Diagram](ER_Diagram.png)
     

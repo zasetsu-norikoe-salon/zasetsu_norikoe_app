@@ -68,6 +68,9 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+
+  # ER図を自動生成するためのgem
+  gem 'rails-erd'
 end
 
 group :test do
