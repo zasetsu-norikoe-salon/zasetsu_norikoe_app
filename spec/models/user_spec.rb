@@ -36,9 +36,9 @@ RSpec.describe User, type: :model do
     end
 
     it '就業形態が無い場合、無効である' do
-      user.employment_form = ''
+      user.employment_type = ''
       user.valid?
-      expect(user.errors[:employment_form]).to include("can't be blank")
+      expect(user.errors[:employment_type]).to include("can't be blank")
     end
 
     it '挫折カウントが無い場合、無効である' do
