@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
   create_table "user_and_skill_set_relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "ユーザー・スキルセット紐付けデータ", force: :cascade do |t|
     t.bigint "user_id", null: false, comment: "ユーザーID"
     t.bigint "skill_set_id", null: false, comment: "スキルセットID"
-    t.integer "level", default: 3, null: false, comment: "経験値(1: ベテラン 2:実務経験あり 3:勉強中)"
+    t.integer "level", default: 3, null: false, comment: "経験値(1: 勉強中 2:実務経験あり 3:ベテラン)"
     t.datetime "deleted_at", comment: "削除日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
     t.string "email", null: false, comment: "メールアドレス"
     t.string "encrypted_password", default: "", null: false, comment: "パスワード"
     t.string "name", null: false, comment: "slack名"
-    t.integer "gender", default: 1, null: false, comment: "性別"
+    t.integer "gender", default: 0, null: false, comment: "性別(0: 未回答 1:男性 2:女性 9:その他)"
     t.string "age", comment: "世代"
-    t.integer "employment_form", default: 1, null: false, comment: "就業形態"
+    t.integer "employment_type", default: 1, null: false, comment: "就業形態(1: 正社員, 2: 正社員(異業種), 3: 副業, 4: フリーランス, 5: インターン, 6: 求職中)"
     t.string "prefecture", comment: "住んでる都道府県"
     t.string "available_work_time", comment: "稼働可能時間帯"
     t.string "qualification", comment: "資格取得"
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
     t.string "twitter_url", comment: "Twitter URL"
     t.string "github_url", comment: "GitHub URL"
     t.string "port_url", comment: "ポートフォリオURL"
-    t.datetime "deleted_at", comment: "削除日時"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "deleted_at", comment: "削除日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
