@@ -142,6 +142,13 @@ ja:
       day: 日
       month: 月
       year: 年
+  enumerize:
+    user:
+      gender:
+        not_known: 未回答
+        male: 男性
+        female: 女性
+        other: その他
   errors:
     format: "%{attribute}%{message}"
     messages:

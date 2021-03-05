@@ -4,7 +4,7 @@ class Users < ActiveRecord::Migration[5.2]
       t.string :email, null: false, comment: 'メールアドレス'
       t.string :encrypted_password, null: false, default: '', comment: 'パスワード'
       t.string :name, null: false, comment: 'slack名'
-      t.integer :gender, null: false, default: 1, comment: '性別'
+      t.integer :gender, null: false, default: 0, comment: '性別(0: 未回答 1:男性 2:女性 9:その他)'
       t.string :age, comment: '世代'
       t.integer :employment_form, null: false, default: 1, comment: '就業形態'
       t.string :prefecture, comment: '住んでる都道府県'
@@ -21,7 +21,6 @@ class Users < ActiveRecord::Migration[5.2]
       t.string :twitter_url, comment: 'Twitter URL'
       t.string :github_url, comment: 'GitHub URL'
       t.string :port_url, comment: 'ポートフォリオURL'
-      t.datetime :deleted_at, comment: '削除日時'
 
       ## Recoverable
       t.string   :reset_password_token
@@ -30,6 +29,7 @@ class Users < ActiveRecord::Migration[5.2]
       ## Rememberable
       t.datetime :remember_created_at
 
+      t.datetime :deleted_at, comment: '削除日時'
       t.timestamps
     end
     add_index :users, :email,                unique: true
