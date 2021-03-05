@@ -78,6 +78,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
+    enumerize (2.4.0)
+      activesupport (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
     factory_bot (6.1.0)
@@ -275,6 +277,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
   devise
+  enumerize
   factory_bot_rails
   faker
   jbuilder (~> 2.5)

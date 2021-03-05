@@ -41,6 +41,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # devise
 gem 'devise'
 
+# Enumerize
+gem 'enumerize'
+
 # Paranoia
 gem 'paranoia', '~> 2.2'
 
