@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
     t.string "name", null: false, comment: "slack名"
     t.integer "gender", default: 0, null: false, comment: "性別(0: 未回答 1:男性 2:女性 9:その他)"
     t.string "age", comment: "世代"
-    t.integer "employment_form", default: 1, null: false, comment: "就業形態"
+    t.integer "employment_form", default: 1, null: false, comment: "就業形態(1: 正社員, 2: 正社員(異業種), 3: 副業, 4: フリーランス, 5: インターン, 6: 求職中)"
     t.string "prefecture", comment: "住んでる都道府県"
     t.string "available_work_time", comment: "稼働可能時間帯"
     t.string "qualification", comment: "資格取得"
