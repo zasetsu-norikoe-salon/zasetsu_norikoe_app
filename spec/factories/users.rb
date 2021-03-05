@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    sequence(:email) { Faker::Internet.free_email }
+    sequence(:email) { Faker::Internet.email(domain: 'example') }
     sequence(:password) { 'password' }
     sequence(:name) { Faker::Name.first_name }
     sequence(:gender) { %i[not_known male female other].sample }
