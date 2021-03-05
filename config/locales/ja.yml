@@ -156,6 +156,11 @@ ja:
         freelance: フリーランス
         internship: インターン
         job_seeker: 求職中
+    user_and_skill_set_relationship:
+      level:
+        junior: 勉強中
+        middle: 実務経験あり
+        veteran: ベテラン
   errors:
     format: "%{attribute}%{message}"
     messages:
