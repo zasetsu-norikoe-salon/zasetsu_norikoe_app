@@ -12,4 +12,6 @@ class UserAndSkillSetRelationship < ApplicationRecord
   enumerize :level,
             in: { junior: 1, middle: 2, veteran: 3 },
             default: :junior
+
+  validates :level, presence: true
 end
