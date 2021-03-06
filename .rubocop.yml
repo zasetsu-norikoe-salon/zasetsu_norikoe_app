@@ -31,3 +31,7 @@ Metrics/BlockLength:
   CountComments: false
   Exclude:
     - 'spec/**/*'
+
+# contextの接頭辞を指定しない
+RSpec/ContextWording:
+  Enabled: false
