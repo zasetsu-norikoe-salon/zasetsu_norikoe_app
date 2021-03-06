@@ -27,4 +27,14 @@ RSpec.describe SkillSet, type: :model do
       end
     end
   end
+
+  describe 'Userと紐付いているSkillSet' do
+    let!(:skill_set) { create(:skill_set, :with_users) }
+
+    context 'SkillSetが削除された時' do
+      it '紐付くUserAndSkillSetRelationshipも削除される' do
+        expect { skill_set.destroy }.to change(UserAndSkillSetRelationship, :count).by(-1)
+      end
+    end
+  end
 end
