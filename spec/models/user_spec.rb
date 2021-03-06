@@ -17,10 +17,30 @@ RSpec.describe User, type: :model do
       expect(user.errors[:email]).to include(I18n.t('errors.messages.blank'))
     end
 
+    it 'すでに登録してあるメールアドレスを登録しようとした場合、無効である' do
+      user.email = 'test@example.com'
+      user.save
+      other_user = build(:user, email: 'test@example.com')
+      other_user.valid?
+      expect(other_user.errors[:email]).to include(I18n.t('errors.messages.taken'))
+    end
+
+    it '@が二つあるメールアドレスの場合、無効である' do
+      user.email = 'test@@example.com'
+      user.valid?
+      expect(user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
+    end
+
     it 'パスワードが無い場合、無効である' do
       user.password = ''
       user.valid?
       expect(user.errors[:password]).to include(I18n.t('errors.messages.blank'))
+    end
+
+    it 'パスワードが6文字の場合、無効である' do
+      user.password = '123456'
+      user.valid?
+      expect(user.errors[:password]).to include(I18n.t('errors.messages.too_short', count: 8))
     end
 
     it '名前が無い場合、無効である' do
