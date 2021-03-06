@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root to: 'users#index'
   devise_for :users
-  resources :users
+  resources :users, only: [:index, :show]
   namespace :mock do
     get 'users/login'
     get 'users/index'
