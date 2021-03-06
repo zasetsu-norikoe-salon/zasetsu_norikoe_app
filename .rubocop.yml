@@ -35,3 +35,7 @@ Metrics/BlockLength:
 # contextの接頭辞を指定しない
 RSpec/ContextWording:
   Enabled: false
+
+# ドキュメントの無いClassを許可
+Style/Documentation:
+  Enabled: false

@@ -31,4 +31,14 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :employment_type, presence: true
   validates :zasetsu_count, presence: true
+
+  # URLのバリデーション
+  URL_REGEX = /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/.freeze
+  with_options allow_nil: true, format: URL_REGEX do
+    validates :facebook_url
+    validates :insta_url
+    validates :twitter_url
+    validates :github_url
+    validates :port_url
+  end
 end

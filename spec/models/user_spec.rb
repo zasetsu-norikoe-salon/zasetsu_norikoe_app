@@ -17,10 +17,36 @@ RSpec.describe User, type: :model do
       expect(user.errors[:email]).to include(I18n.t('errors.messages.blank'))
     end
 
+    it 'すでに登録してあるメールアドレスを登録しようとした場合、無効である' do
+      user.email = 'test@example.com'
+      user.save
+      other_user = build(:user, email: 'test@example.com')
+      other_user.valid?
+      expect(other_user.errors[:email]).to include(I18n.t('errors.messages.taken'))
+    end
+
+    it '@がないメールアドレスの場合、無効である' do
+      user.email = 'test.example.com'
+      user.valid?
+      expect(user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
+    end
+
+    it '@が二つあるメールアドレスの場合、無効である' do
+      user.email = 'test@@example.com'
+      user.valid?
+      expect(user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
+    end
+
     it 'パスワードが無い場合、無効である' do
       user.password = ''
       user.valid?
       expect(user.errors[:password]).to include(I18n.t('errors.messages.blank'))
+    end
+
+    it 'パスワードが6文字の場合、無効である' do
+      user.password = '123456'
+      user.valid?
+      expect(user.errors[:password]).to include(I18n.t('errors.messages.too_short', count: 8))
     end
 
     it '名前が無い場合、無効である' do
@@ -45,6 +71,38 @@ RSpec.describe User, type: :model do
       user.zasetsu_count = ''
       user.valid?
       expect(user.errors[:zasetsu_count]).to include(I18n.t('errors.messages.blank'))
+    end
+
+    context 'URL系のカラム' do
+      it 'FacebookのURLに無効なURLが入力されている場合、無効である' do
+        user.facebook_url = 'FacebookのURLです'
+        user.valid?
+        expect(user.errors[:facebook_url]).to include(I18n.t('errors.messages.invalid'))
+      end
+
+      it 'InstagramのURLに無効なURLが入力されている場合、無効である' do
+        user.insta_url = 'InstagramのURLです'
+        user.valid?
+        expect(user.errors[:insta_url]).to include(I18n.t('errors.messages.invalid'))
+      end
+
+      it 'TwitterのURLに無効なURLが入力されている場合、無効である' do
+        user.twitter_url = 'TwitterのURLです'
+        user.valid?
+        expect(user.errors[:twitter_url]).to include(I18n.t('errors.messages.invalid'))
+      end
+
+      it 'GitHubのURLに無効なURLが入力されている場合、無効である' do
+        user.github_url = 'GitHubのURLです'
+        user.valid?
+        expect(user.errors[:github_url]).to include(I18n.t('errors.messages.invalid'))
+      end
+
+      it 'ポートフォリオのURLに無効なURLが入力されている場合、無効である' do
+        user.port_url = 'ポートフォリオのURLです'
+        user.valid?
+        expect(user.errors[:port_url]).to include(I18n.t('errors.messages.invalid'))
+      end
     end
   end
 
