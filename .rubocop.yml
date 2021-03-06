@@ -44,3 +44,6 @@ RSpec/InstanceVariable:
 # ドキュメントの無いClassを許可
 Style/Documentation:
   Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

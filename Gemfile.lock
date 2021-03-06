@@ -62,6 +62,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     choice (0.2.0)
+    coderay (1.1.3)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     devise (4.7.3)
@@ -120,6 +121,11 @@ GEM
       activerecord (>= 4.0, < 6.2)
     parser (3.0.0.0)
       ast (~> 2.4.1)
+    pry (0.14.0)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (4.0.6)
     puma (3.12.6)
     racc (1.5.2)
@@ -224,6 +230,9 @@ GEM
       tilt (>= 1.1, < 3)
     sassc (2.4.0)
       ffi (~> 1.9)
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -288,6 +297,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
   paranoia (~> 2.2)
+  pry-rails
   puma (~> 3.11)
   rails (~> 5.2.4)
   rails-erd
@@ -298,6 +308,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (~> 5.0)
+  seed-fu
   selenium-webdriver
   simplecov
   spring
@@ -312,4 +323,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.12
+   2.2.13
