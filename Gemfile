@@ -62,6 +62,9 @@ group :development, :test do
 
   # Faker
   gem 'faker'
+
+  # Code coverage
+  gem 'simplecov', require: false
 end
 
 group :development do

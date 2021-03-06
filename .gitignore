@@ -29,6 +29,9 @@
 # gem
 /vendor
 
+#Code coverage
+coverage
+
 # jetbrains
 /.idea
 
