@@ -27,4 +27,14 @@ RSpec.describe SkillCategory, type: :model do
       end
     end
   end
+
+  describe 'Userと紐付いているSkillCategory' do
+    let!(:skill_category) { create(:skill_category, :with_users) }
+
+    context 'SkillCategoryが削除された時' do
+      it '紐付くUserAndSkillCategoryRelationshipも削除される' do
+        expect { skill_category.destroy }.to change(UserAndSkillCategoryRelationship, :count).by(-1)
+      end
+    end
+  end
 end
