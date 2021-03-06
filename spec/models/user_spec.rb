@@ -47,4 +47,38 @@ RSpec.describe User, type: :model do
       expect(user.errors[:zasetsu_count]).to include(I18n.t('errors.messages.blank'))
     end
   end
+
+  describe 'アソシーエション' do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context 'SkillCategoryモデルとの関係' do
+      let(:target) { :skill_categories}
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'UserAndSkillCategoryRelationshipモデルとの関係' do
+      let(:target) { :user_and_skill_category_relationships }
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'SkillSetモデルとの関係' do
+      let(:target) { :skill_sets }
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'UserAndSkillSetRelationshipモデルとの関係' do
+      let(:target) { :user_and_skill_set_relationships }
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+  end
 end
