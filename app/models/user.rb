@@ -33,7 +33,7 @@ class User < ApplicationRecord
   validates :zasetsu_count, presence: true
 
   # URLのバリデーション
-  URL_REGEX = /\A#{URI::regexp(%w(http https))}\z/
+  URL_REGEX = /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/.freeze
   with_options allow_nil: true, format: URL_REGEX do
     validates :facebook_url
     validates :insta_url
