@@ -81,4 +81,16 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'スキル属性とスキルセットと紐付いているUser' do
+    let!(:user) { create(:user, :with_skill_categories, :with_skill_sets) }
+    context 'Userが削除された時' do
+      it '紐付くUserAndSkillCategoryRelationshipも削除される' do
+        expect{ user.destroy }.to change{ UserAndSkillCategoryRelationship.count }.by(-1)
+      end
+      it '紐付くUserAndSkillCategoryRelationshipも削除される' do
+        expect{ user.destroy }.to change{ UserAndSkillSetRelationship.count }.by(-1)
+      end
+    end
+  end
 end
