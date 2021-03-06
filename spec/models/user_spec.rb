@@ -25,6 +25,12 @@ RSpec.describe User, type: :model do
       expect(other_user.errors[:email]).to include(I18n.t('errors.messages.taken'))
     end
 
+    it '@がないメールアドレスの場合、無効である' do
+      user.email = 'test.example.com'
+      user.valid?
+      expect(user.errors[:email]).to include(I18n.t('errors.messages.invalid'))
+    end
+
     it '@が二つあるメールアドレスの場合、無効である' do
       user.email = 'test@@example.com'
       user.valid?
