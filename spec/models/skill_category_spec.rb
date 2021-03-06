@@ -6,6 +6,18 @@ RSpec.describe SkillCategory, type: :model do
   # FactoryBotでSkillCategoryをオブジェクト化
   let(:skill_category) { build(:skill_category) }
 
+  describe 'モデルバリデーション' do
+    it 'スキル属性名が入力されている場合、有効である' do
+      expect(skill_category).to be_valid
+    end
+
+    it 'スキル属性名が未入力の場合、無効である' do
+      skill_category.name = ''
+      skill_category.valid?
+      expect(skill_category.errors[:name]).to include(I18n.t('errors.messages.blank'))
+    end
+  end
+
   describe 'アソシーエション' do
     let(:association) do
       described_class.reflect_on_association(target)
