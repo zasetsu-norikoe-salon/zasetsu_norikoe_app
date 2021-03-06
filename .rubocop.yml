@@ -36,6 +36,11 @@ Metrics/BlockLength:
 RSpec/ContextWording:
   Enabled: false
 
+# インスタンス変数の使用を許可する
+RSpec/InstanceVariable:
+  Exclude:
+    - 'spec/views/users/edit.html.erb_spec.rb'
+
 # ドキュメントの無いClassを許可
 Style/Documentation:
   Enabled: false
