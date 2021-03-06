@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe 'users/index', type: :view do
   before do
     assign(:users, [
-             User.create!,
-             User.create!
-           ])
+      create(:user),
+      create(:user)
+    ])
   end
 
   it 'renders a list of users' do
