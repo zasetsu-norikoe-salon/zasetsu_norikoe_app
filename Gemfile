@@ -42,6 +42,9 @@ gem 'devise'
 # Enumerize
 gem 'enumerize'
 
+# Font Awesome
+gem 'font-awesome-sass', '~> 5.15.1'
+
 # Paranoia
 gem 'paranoia', '~> 2.2'
 
