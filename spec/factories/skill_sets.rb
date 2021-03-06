@@ -25,5 +25,12 @@ FactoryBot.define do
     trait :os do
       sequence(:name) { Faker::Computer.os }
     end
+
+    # Userも一緒に作成する
+    trait :with_users do
+      after(:create) do |skill_set|
+        create(:user_and_skill_set_relationship, skill_set: skill_set)
+      end
+    end
   end
 end
