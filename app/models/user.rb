@@ -8,6 +8,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Association
+  has_many :user_and_skill_category_relationships, dependent: :destroy
+  has_many :skill_categories, through: :user_and_skill_category_relationships
+
+  has_many :user_and_skill_set_relationships, dependent: :destroy
+  has_many :skill_sets, through: :user_and_skill_set_relationships
+
   # 性別(未回答: 0, 男性: 1, 女性: 2, その他: 9)
   enumerize :gender,
             in: { not_known: 0, male: 1, female: 2, other: 9 },

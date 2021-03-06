@@ -10,20 +10,27 @@ FactoryBot.define do
         Faker::App.name
       ].sample
     end
-  end
 
-  # プログラミング言語
-  factory :pg_lang, class: 'SkillSet' do
-    sequence(:name) { Faker::ProgrammingLanguage.name }
-  end
+    # プログラミング言語
+    trait :pg_lang do
+      sequence(:name) { Faker::ProgrammingLanguage.name }
+    end
 
-  # アプリの名前
-  factory :app_name, class: 'SkillSet' do
-    sequence(:name) { Faker::App.name }
-  end
+    # アプリの名前
+    trait :app_name do
+      sequence(:name) { Faker::App.name }
+    end
 
-  # OSの名前
-  factory :os, class: 'SkillSet' do
-    sequence(:name) { Faker::Computer.os }
+    # OSの名前
+    trait :os do
+      sequence(:name) { Faker::Computer.os }
+    end
+
+    # Userも一緒に作成する
+    trait :with_users do
+      after(:create) do |skill_set|
+        create(:user_and_skill_set_relationship, skill_set: skill_set)
+      end
+    end
   end
 end

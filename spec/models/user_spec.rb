@@ -47,4 +47,56 @@ RSpec.describe User, type: :model do
       expect(user.errors[:zasetsu_count]).to include(I18n.t('errors.messages.blank'))
     end
   end
+
+  describe 'アソシーエション' do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context 'SkillCategoryモデルとの関係' do
+      let(:target) { :skill_categories }
+
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'UserAndSkillCategoryRelationshipモデルとの関係' do
+      let(:target) { :user_and_skill_category_relationships }
+
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'SkillSetモデルとの関係' do
+      let(:target) { :skill_sets }
+
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'UserAndSkillSetRelationshipモデルとの関係' do
+      let(:target) { :user_and_skill_set_relationships }
+
+      it 'has_manyである' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+  end
+
+  describe 'スキル属性とスキルセットと紐付いているUser' do
+    let!(:user) { create(:user, :with_skill_categories, :with_skill_sets) }
+
+    context 'Userが削除された時' do
+      it '紐付くUserAndSkillCategoryRelationshipも削除される' do
+        expect { user.destroy }.to change(UserAndSkillCategoryRelationship, :count).by(-1)
+      end
+
+      it '紐付くUserAndSkillSetRelationshipも削除される' do
+        expect { user.destroy }.to change(UserAndSkillSetRelationship, :count).by(-1)
+      end
+    end
+  end
 end
