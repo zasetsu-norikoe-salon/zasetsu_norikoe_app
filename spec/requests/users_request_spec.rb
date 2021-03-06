@@ -41,6 +41,7 @@ RSpec.describe '/users', type: :request do
     end
   end
 
+  # TODO: indexとshow以外を使用するときにはコメントアウトを外す
   # describe 'GET /new' do
   #   it 'renders a successful response' do
   #     get new_user_url
