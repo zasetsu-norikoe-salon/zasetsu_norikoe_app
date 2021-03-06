@@ -54,7 +54,8 @@ RSpec.describe User, type: :model do
     end
 
     context 'SkillCategoryモデルとの関係' do
-      let(:target) { :skill_categories}
+      let(:target) { :skill_categories }
+
       it 'has_manyである' do
         expect(association.macro).to eq :has_many
       end
@@ -62,6 +63,7 @@ RSpec.describe User, type: :model do
 
     context 'UserAndSkillCategoryRelationshipモデルとの関係' do
       let(:target) { :user_and_skill_category_relationships }
+
       it 'has_manyである' do
         expect(association.macro).to eq :has_many
       end
@@ -69,6 +71,7 @@ RSpec.describe User, type: :model do
 
     context 'SkillSetモデルとの関係' do
       let(:target) { :skill_sets }
+
       it 'has_manyである' do
         expect(association.macro).to eq :has_many
       end
@@ -76,6 +79,7 @@ RSpec.describe User, type: :model do
 
     context 'UserAndSkillSetRelationshipモデルとの関係' do
       let(:target) { :user_and_skill_set_relationships }
+
       it 'has_manyである' do
         expect(association.macro).to eq :has_many
       end
@@ -84,12 +88,14 @@ RSpec.describe User, type: :model do
 
   describe 'スキル属性とスキルセットと紐付いているUser' do
     let!(:user) { create(:user, :with_skill_categories, :with_skill_sets) }
+
     context 'Userが削除された時' do
       it '紐付くUserAndSkillCategoryRelationshipも削除される' do
-        expect{ user.destroy }.to change{ UserAndSkillCategoryRelationship.count }.by(-1)
+        expect { user.destroy }.to change(UserAndSkillCategoryRelationship, :count).by(-1)
       end
+
       it '紐付くUserAndSkillCategoryRelationshipも削除される' do
-        expect{ user.destroy }.to change{ UserAndSkillSetRelationship.count }.by(-1)
+        expect { user.destroy }.to change(UserAndSkillSetRelationship, :count).by(-1)
       end
     end
   end

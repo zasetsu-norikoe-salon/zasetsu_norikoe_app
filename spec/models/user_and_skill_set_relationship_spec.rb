@@ -12,7 +12,8 @@ RSpec.describe UserAndSkillSetRelationship, type: :model do
     end
 
     context 'Userモデルとの関係' do
-      let(:target) { :user}
+      let(:target) { :user }
+
       it 'belongs_toである' do
         expect(association.macro).to eq :belongs_to
       end
@@ -20,6 +21,7 @@ RSpec.describe UserAndSkillSetRelationship, type: :model do
 
     context 'SkillSetモデルとの関係' do
       let(:target) { :skill_set }
+
       it 'belongs_toである' do
         expect(association.macro).to eq :belongs_to
       end

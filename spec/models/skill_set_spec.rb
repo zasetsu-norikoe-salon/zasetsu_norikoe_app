@@ -12,7 +12,8 @@ RSpec.describe SkillSet, type: :model do
     end
 
     context 'Userモデルとの関係' do
-      let(:target) { :users}
+      let(:target) { :users }
+
       it 'has_manyである' do
         expect(association.macro).to eq :has_many
       end
@@ -20,6 +21,7 @@ RSpec.describe SkillSet, type: :model do
 
     context 'UserAndSkillSetRelationshipモデルとの関係' do
       let(:target) { :user_and_skill_set_relationships }
+
       it 'has_manyである' do
         expect(association.macro).to eq :has_many
       end
