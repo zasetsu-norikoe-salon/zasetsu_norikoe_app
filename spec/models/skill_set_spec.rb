@@ -6,6 +6,18 @@ RSpec.describe SkillSet, type: :model do
   # FactoryBotでSkillSetをオブジェクト化
   let(:skill_set) { build(:skill_set) }
 
+  describe 'モデルバリデーション' do
+    it '名前が入力されている場合、有効である' do
+      expect(skill_set).to be_valid
+    end
+
+    it '名前が未入力の場合、無効である' do
+      skill_set.name = ''
+      skill_set.valid?
+      expect(skill_set.errors[:name]).to include(I18n.t('errors.messages.blank'))
+    end
+  end
+
   describe 'アソシーエション' do
     let(:association) do
       described_class.reflect_on_association(target)
