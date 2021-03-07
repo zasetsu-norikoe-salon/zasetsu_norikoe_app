@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
 
   create_table "skill_sets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "スキルセットデータ(使用言語, FW等)", force: :cascade do |t|
     t.string "name", null: false, comment: "スキルセット名"
+    t.bigint "skill_category_id", null: false, comment: "スキル属性ID"
     t.datetime "deleted_at", comment: "削除日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["skill_category_id"], name: "index_skill_sets_on_skill_category_id"
   end
 
   create_table "user_and_skill_category_relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "ユーザー・スキル属性紐付けデータ", force: :cascade do |t|
@@ -78,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "skill_sets", "skill_categories"
   add_foreign_key "user_and_skill_category_relationships", "skill_categories"
   add_foreign_key "user_and_skill_category_relationships", "users"
   add_foreign_key "user_and_skill_set_relationships", "skill_sets"

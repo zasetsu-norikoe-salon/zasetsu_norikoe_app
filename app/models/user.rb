@@ -41,4 +41,8 @@ class User < ApplicationRecord
     validates :github_url
     validates :port_url
   end
+
+  def user_skill_category_sets(cat_id)
+    skill_sets.where(skill_category_id: cat_id)
+  end
 end

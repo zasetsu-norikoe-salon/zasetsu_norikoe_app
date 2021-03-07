@@ -32,5 +32,7 @@ FactoryBot.define do
         create(:user_and_skill_set_relationship, skill_set: skill_set)
       end
     end
+
+    association(:skill_category)
   end
 end
