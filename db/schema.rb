@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_050700) do
+ActiveRecord::Schema.define(version: 2021_02_21_045425) do
 
   create_table "skill_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "スキル属性データ(Web制作等)", force: :cascade do |t|
     t.string "name", null: false, comment: "スキル属性名"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 2021_03_07_050700) do
 
   create_table "skill_sets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "スキルセットデータ(使用言語, FW等)", force: :cascade do |t|
     t.string "name", null: false, comment: "スキルセット名"
+    t.bigint "skill_category_id", null: false, comment: "スキル属性ID"
     t.datetime "deleted_at", comment: "削除日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "skill_category_id"
     t.index ["skill_category_id"], name: "index_skill_sets_on_skill_category_id"
   end
 

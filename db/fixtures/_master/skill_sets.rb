@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SkillSet.seed(:id,
               { id: 1, name: 'Ruby on Rails', skill_category_id: 1 },
               { id: 2, name: 'PHP', skill_category_id: 1 },

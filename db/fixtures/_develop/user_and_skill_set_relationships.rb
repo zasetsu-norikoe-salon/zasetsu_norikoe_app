@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 UserAndSkillSetRelationship.seed(:id,
                                  { id: 1, user_id: 1, skill_set_id: 1, level: 2 },
                                  { id: 2, user_id: 1, skill_set_id: 2, level: 1 },

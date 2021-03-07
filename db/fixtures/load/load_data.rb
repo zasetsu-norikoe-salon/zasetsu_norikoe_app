@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # このファイルでseedデータを一括管理している
 # 各seedファイルを"db/fixtures/_master"(マスターデータ用)に"db/fixtures/_develop"(開発データ用)に
 # 追加したら、このファイルに指定すること
