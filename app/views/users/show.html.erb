@@ -1,0 +1,152 @@
+<p id="notice"><%= notice %></p>
+<section class="search">
+  <div class="result_contain inner">
+    <div class="section__head">
+      <h2 class="section__ttl">プロフィール詳細</h2>
+    </div>
+    <div class="section__sub">
+      <i class="far fa-dizzy fa-4x my-gray"></i>
+      <p>・・・・・・・・これまでの挫折回数（笑）</p>
+    </div>
+  </div>
+
+  <!-- 詳細一覧 -->
+  <div class="main"> 
+    <!-- 詳細中身 -->
+    <div class="result__contents inner">
+      <div class="result__contentsBox">
+        <!-- スキル(アコーディオンメニュー）の部分 -->
+        <div class="result__skill">
+          <% @user.skill_categories.each_with_index do |cat, i| %>
+            <%= check_box 'check1', i + 1, { id: "check1-#{i + 1}", class: "result__check" }, true, false %>
+            <%= label_tag "check1-#{i + 1}", cat.name, class: 'result__label' %>
+
+            <!-- アコーディオンメニューの中身 -->
+            <div class="result__skills">	
+              <dl class="result__skilldata">
+                <% @user.user_skill_category_sets(cat.id).each do |skill_set| %>
+                  <div class="result__skillBox">
+                    <dt class="result__skillTtl"><%= skill_set.name %></dt>
+                    <dd class="result__skillCnt"><%= skill_set.level(@user.id) %></dd>
+                  </div>
+                <% end %>
+              </dl>
+            </div>
+            <!-- アコーディオンメニューの中身 -->
+          <% end %>
+
+
+        </div>
+        <!-- スキル(アコーディオンメニュー）の部分 -->
+
+        <!-- プロフィール -->
+        <div class="result__prof">
+          <dl class="result__data">
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">Slack名</dt>
+              <dd class="result__dataCnt">
+                <%= @user.name %>
+              </dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">性別</dt>
+              <dd class="result__dataCnt"><%= @user.gender_text %></dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">世代</dt>
+              <dd class="result__dataCnt"><%= @user.age %></dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">住んでる所</dt>
+              <dd class="result__dataCnt"><%= @user.prefecture %></dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">稼働可能時間帯</dt>
+              <dd class="result__dataCnt"><%= @user.available_work_time %></dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- 個人情報 -->
+        <div class="result__prof">
+          <dl class="result__data">
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">取得資格</dt>
+              <dd class="result__dataCnt"><%= @user.qualification %></dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">趣味</dt>
+              <dd class="result__dataCnt"><%= @user.hobby %></dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">得意なこと</dt>
+              <dd class="result__dataCnt"><%= @user.special_skill %></dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">話したいこと</dt>
+              <dd class="result__dataCnt"><%= @user.want_talk %></dd>
+            </div>
+            <div class="result__dataBox">
+              <dt class="result__dataTtl">話したくないこと</dt>
+              <dd class="result__dataCnt"><%= @user.not_want_talk %></dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- SNS・ポートフォリオ -->
+        <div class="result__prof">
+          <div class="result__box">
+            <div class="result__text">
+              <h2>＼ Follow me ／</h2>
+            </div>
+            <div class="result__sns">
+              <ul class="result__sns--item">
+                <li class ="result__sns--twitter">
+                  <% if @user.twitter_url.present? %>
+                    <%= link_to @user.twitter_url, target: :_blank do %>
+                      <i class="fab fa-twitter"></i>
+                    <% end %>
+                  <% else %>
+                    <i class="fab fa-twitter"></i>
+                  <% end %>
+                </li>
+                <li class="result__sns--facebook">
+                  <% if @user.facebook_url.present? %>
+                    <%= link_to @user.facebook_url, target: :_blank do %>
+                      <i class="fab fa-facebook-f"></i>
+                    <% end %>
+                  <% else %>
+                    <i class="fab fa-facebook-f"></i>
+                  <% end %>
+                </li>
+                <li class="result__sns--instagram">
+                  <% if @user.insta_url.present? %>
+                    <%= link_to @user.insta_url, target: :_blank do %>
+                      <i class="fab fa-instagram"></i>
+                    <% end %>
+                  <% else %>
+                    <i class="fab fa-instagram"></i>
+                  <% end %>
+                </li>
+                <li class="result__sns--github">
+                  <% if @user.github_url.present? %>
+                    <%= link_to @user.github_url, target: :_blank do %>
+                      <i class="fab fa-github fa-2x"></i>
+                    <% end %>
+                  <% else %>
+                    <i class="fab fa-github fa-2x"></i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <% if @user.port_url.present? %>
+                <%= link_to "ポートフォリオ", @user.port_url, class: "result__button button", target: :_blank %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

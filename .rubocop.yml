@@ -1,0 +1,46 @@
+inherit_from: .rubocop_todo.yml
+
+# rubocop関連のgemをrequire
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.6.6
+  TargetRailsVersion: 5.2.4
+  # rubocopアップデート時に、新ルールを適用しない
+  NewCops: disable
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'config/**/*'
+
+Rails:
+  Enabled: true
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/BlockLength:
+  CountComments: false
+  Exclude:
+    - 'spec/**/*'
+
+# contextの接頭辞を指定しない
+RSpec/ContextWording:
+  Enabled: false
+
+# インスタンス変数の使用を許可する
+RSpec/InstanceVariable:
+  Exclude:
+    - 'spec/views/users/edit.html.erb_spec.rb'
+
+# ドキュメントの無いClassを許可
+Style/Documentation:
+  Enabled: false
