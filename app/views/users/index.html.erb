@@ -1,19 +1,66 @@
 <p id="notice"><%= notice %></p>
+<header class="header">
+  <div class="header__container">
+    <h1 class="header__ttl">挫折乗り越えサロンMember Site</h1>
+    <form id="" action="" method="get" class="header__search">
+      <input type="text" id="" name="" placeholder="Slack名、言語などを入力してください" class="header__searchArea">
+      <button type="submit" id="" class="header__searchBtn"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+</header>
 
-<h1>Users</h1>
+<section class="search">
+  <div class="result_container inner">
+    <div class="section__head">
+      <h2 class="section__ttl">メンバーをさがす</h2>
+    </div>
+    <div class="search__detail">
+      <a href="#" class="search__btn button">さがす</a>
+    </div>
+  </div>
+</section>
+<section class="result">
+  <div class="result_container inner">
+    <div class="section__head">
+      <h2 class="section__ttl">検索結果</h2>
+      <p class="result__numbers">
+        <span class="result__total"><%= @users.count %></span>人中<span class="result__firstNum">1</span>-<span class="result__lastNum">5</span>人表示<!--# 数字をspanで囲っているのは関数を挿入する際に使いやすいかなと思って入れています。CSSは特に指定していないのでバックエンド側で必要でなければspanは削除可能です。 -->
+      </p>
+    </div><!-- section__head -->
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="result__content">
+      <% @users.each do |user| %>
+        <div class="result__card">
+          <div class="result__prof"><!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+            <dl class="result__data">
+              <div class="result__dataBox">
+                <dt class="result__dataTtl">Slack名</dt>
+                <dd class="result__dataCnt"><%= user.name %></dd>
+              </div>
+              <div class="result__dataBox">
+                <dt class="result__dataTtl">性別</dt>
+                <dd class="result__dataCnt"><%= user.gender_text %></dd>
+              </div>
+              <div class="result__dataBox">
+                <dt class="result__dataTtl">世代</dt>
+                <dd class="result__dataCnt"><%= user.age %></dd>
+              </div>
+              <div class="result__dataBox">
+                <dt class="result__dataTtl">住んでる所</dt>
+                <dd class="result__dataCnt"><%= user.prefecture %></dd>
+              </div>
+              <div class="result__dataBox">
+                <dt class="result__dataTtl">稼働可能時間帯</dt>
+                <dd class="result__dataCnt"><%= user.available_work_time %></dd>
+              </div>
+            </dl>
+          </div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to 'Show', user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="pager">
+  <%= paginate @users %>
+</div>
