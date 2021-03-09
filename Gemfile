@@ -58,7 +58,6 @@ gem 'rails-i18n', '~> 5.1'
 gem 'seed-fu'
 
 group :development, :test do
-
   # N+1問題を検出する
   gem 'bullet'
 
