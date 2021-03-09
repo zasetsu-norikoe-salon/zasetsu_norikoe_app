@@ -207,11 +207,14 @@
 
 }
 
-.txtarea {
-  border: 3px solid #9D6907;
-  border-radius: 10px;
+.result__txtBox {
+  width: 90%;
   display: inline-block;
   position: relative;
   top: 40px;
   left: 28px;;
+}
+
+.result__txtBox-txt {
+  font-size: 1.5rem;
 }
