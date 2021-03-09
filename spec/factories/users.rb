@@ -18,5 +18,21 @@ FactoryBot.define do
         create(:user_and_skill_category_relationship, user: user, skill_category: skill_category)
       end
     end
+
+    trait :for_seed do
+      after(:create) do |user|
+        # スキル属性を3つ作る
+        user.skill_categories << create_list(:skill_category, 3)
+        user.skill_categories.each do |skill_category|
+          # スキルセットをスキル属性の数×3つ作る
+          skill_sets = create_list(:skill_set, 3)
+          skill_sets.each do |skill_set|
+            # 作ったスキル属性にスキルセットを登録し、ユーザーに紐付ける
+            skill_category.skill_sets << skill_set
+            create(:user_and_skill_set_relationship, user: user, skill_set: skill_set)
+          end
+        end
+      end
+    end
   end
 end
