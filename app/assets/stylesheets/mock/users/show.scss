@@ -22,7 +22,7 @@
     background-repeat: no-repeat;
   }
 
-  & a {
+  & p {
     display: inline-block;
     position: absolute;
     font-size: 0.5rem;
@@ -63,6 +63,15 @@
     left: 50%;
     transform: translateX(-50%);
 		border: 1px dashed $sub-color;
+  }
+
+  &__dataBox i {
+    margin-left: 20px;
+    margin-right: 8px;
+  }
+
+  &__dataBox p {
+    font-size: 1.25rem;
   }
 
   &__box {
