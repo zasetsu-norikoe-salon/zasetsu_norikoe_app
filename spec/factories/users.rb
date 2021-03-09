@@ -9,17 +9,12 @@ FactoryBot.define do
     sequence(:employment_type) { %i[full_time diff_full_time side_biz freelance internship job_seeker].sample }
     sequence(:zasetsu_count) { Faker::Number.digit }
 
-    # スキル属性も一緒に作成する
-    trait :with_skill_categories do
-      after(:create) do |user|
-        create(:user_and_skill_category_relationship, user: user)
-      end
-    end
-
-    # スキルセットも一緒に作成する
+    # スキル属性とスキルセットも一緒に作成する
     trait :with_skill_sets do
       after(:create) do |user|
-        create(:user_and_skill_set_relationship, user: user)
+        user_and_skill_set = create(:user_and_skill_set_relationship, user: user)
+        skill_category = user_and_skill_set.skill_set.skill_category
+        create(:user_and_skill_category_relationship, user: user, skill_category: skill_category)
       end
     end
   end
