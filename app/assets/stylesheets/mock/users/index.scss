@@ -223,14 +223,19 @@
 		padding: 15px;
 		border: 5px dashed $sub-color;
 		font-size: 1.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
   }
+
 		// フリーテキストエリア------------------------
 
 
   // 詳細画面へ移行するボタン------------------------
   &__btn{
     position: absolute;
-    top: 230px;
+    top: 215px;
     right: 20px;
   }
   // 詳細画面へ移行するボタン------------------------
