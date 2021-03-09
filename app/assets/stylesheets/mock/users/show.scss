@@ -100,6 +100,7 @@
 }
 
 
+
 .result__sns {
 
   &--twitter {
@@ -115,6 +116,7 @@
       top: 30%;
       left: 28%;
     }
+
   }
 
   &--facebook {
@@ -147,6 +149,11 @@
     }
   }
 
+  &--github a {
+    text-decoration: none;
+    color: black;
+  }
+  
   &--twitter--mono {
     width: 30px;
     height: 30px;
@@ -192,7 +199,8 @@
     }
   }
 
-  &--github--mono {
+  &--github--mono a {
+    text-decoration: none;
     color: #666;
   }
 
