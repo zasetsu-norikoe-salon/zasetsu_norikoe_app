@@ -44,3 +44,7 @@ RSpec/InstanceVariable:
 # ドキュメントの無いClassを許可
 Style/Documentation:
   Enabled: false
+
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
