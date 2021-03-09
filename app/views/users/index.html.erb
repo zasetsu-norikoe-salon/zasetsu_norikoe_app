@@ -29,7 +29,7 @@
     </div><!-- section__head -->
 
     <div class="result__content">
-      <% @users.each do |user| %>
+      <% @users.each_with_index do |user, user_num| %>
         <div class="result__card">
           <div class="result__prof"><!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
             <dl class="result__data">
@@ -55,6 +55,28 @@
               </div>
             </dl>
           </div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
+
+          <div class="result__skill">		<!-- スキル(アコーディオンメニュー）の部分 -->
+            <% user.skill_categories.each_with_index do |cat, skill_category_num| %>
+              <%= check_box "check#{user_num}", skill_category_num + 1, { id: "check#{user_num}-#{skill_category_num + 1}", class: "result__check" }, true, false %>
+              <%= label_tag "check#{user_num}-#{skill_category_num + 1}", cat.name, class: 'result__label' %>
+
+              <!-- アコーディオンメニューの中身 -->
+              <div class="result__skills">
+                <dl class="result__skilldata">
+                  <% user.user_skill_category_sets(cat.id).each do |skill_set| %>
+                    <div class="result__skillBox">
+                      <dt class="result__skillTtl"><%= skill_set.name %></dt>
+                      <dd class="result__skillCnt"><%= skill_set.level(user.id) %></dd>
+                    </div>
+                  <% end %>
+                </dl>
+              </div>
+              <!-- アコーディオンメニューの中身 -->
+            <% end %>
+          </div>
+          <p class="result__txt"><%= user.free_area %></p>
+          <%= link_to 'プロフィールを詳しく見る', user_path(user), class: 'result__btn button' %>
         </div>
       <% end %>
     </div>
