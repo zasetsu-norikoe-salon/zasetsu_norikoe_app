@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:page]).includes([:user_and_skill_category_relationships, :skill_categories])
   end
 
   # GET /users/1 or /users/1.json
