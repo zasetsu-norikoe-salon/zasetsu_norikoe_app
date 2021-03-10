@@ -152,9 +152,11 @@
           </div>
         </div>
       </div>
-        <div class="result__txtBox">
-          <p class="result__txtBox-txt"><%= safe_join(@user.free_area.split("\n"), tag(:br)) %></p>
-        </div>
+        <% if @user.free_area.present? %>
+          <div class="result__txtBox">
+            <p class="result__txtBox-txt"><%= safe_join(@user.free_area.split("\n"), tag(:br)) %></p>
+          </div>
+        <% end %>
     </div>
   </div>
 </section>
