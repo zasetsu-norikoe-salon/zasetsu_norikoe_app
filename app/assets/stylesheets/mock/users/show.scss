@@ -199,7 +199,7 @@
     }
   }
 
-  &--github--mono a {
+  &--github--mono {
     text-decoration: none;
     color: #666;
   }
@@ -234,4 +234,8 @@
 
 .result__txtBox-txt {
   font-size: 1.5rem;
+}
+
+.disabled {
+  pointer-events: none;
 }

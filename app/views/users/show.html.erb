@@ -101,52 +101,60 @@
             </div>
             <div class="result__sns">
               <ul class="result__sns--item">
-                <li class ="result__sns--twitter">
-                  <% if @user.twitter_url.present? %>
+                <% if @user.twitter_url.present? %>
+                  <li class ="result__sns--twitter">
                     <%= link_to @user.twitter_url, target: :_blank do %>
                       <i class="fab fa-twitter"></i>
                     <% end %>
-                  <% else %>
-                    <i class="fab fa-twitter"></i>
-                  <% end %>
-                </li>
-                <li class="result__sns--facebook">
-                  <% if @user.facebook_url.present? %>
+                  </li>
+                <% else %>
+                  <li class ="result__sns--twitter--mono"><i class="fab fa-twitter"></i></li>
+                <% end %>
+
+                <% if @user.facebook_url.present? %>
+                  <li class="result__sns--facebook">
                     <%= link_to @user.facebook_url, target: :_blank do %>
                       <i class="fab fa-facebook-f"></i>
                     <% end %>
-                  <% else %>
-                    <i class="fab fa-facebook-f"></i>
-                  <% end %>
-                </li>
-                <li class="result__sns--instagram">
-                  <% if @user.insta_url.present? %>
+                  </li>
+                <% else %>
+                  <li class="result__sns--facebook--mono"><i class="fab fa-facebook-f"></i></li>
+                <% end %>
+
+                <% if @user.insta_url.present? %>
+                  <li class="result__sns--instagram">
                     <%= link_to @user.insta_url, target: :_blank do %>
                       <i class="fab fa-instagram"></i>
                     <% end %>
-                  <% else %>
-                    <i class="fab fa-instagram"></i>
-                  <% end %>
-                </li>
-                <li class="result__sns--github">
-                  <% if @user.github_url.present? %>
+                  </li>
+                <% else %>
+                  <li class="result__sns--instagram--mono"><i class="fab fa-instagram"></i></li>
+                <% end %>
+
+                <% if @user.github_url.present? %>
+                  <li class="result__sns--github">
                     <%= link_to @user.github_url, target: :_blank do %>
                       <i class="fab fa-github fa-2x"></i>
                     <% end %>
-                  <% else %>
-                    <i class="fab fa-github fa-2x"></i>
-                  <% end %>
-                </li>
+                  </li>
+                <% else %>
+                  <li class="result__sns--github--mono"><i class="fab fa-github fa-2x"></i></li>
+                <% end %>
               </ul>
             </div>
             <div>
               <% if @user.port_url.present? %>
                 <%= link_to "ポートフォリオ", @user.port_url, class: "result__button button", target: :_blank %>
+              <% else %>
+                <a href="#" class="result__button button after disabled">ポートフォリオ</a>
               <% end %>
             </div>
           </div>
         </div>
       </div>
+        <div class="result__txtBox">
+          <p class="result__txtBox-txt"><%= safe_join(@user.free_area.split("\n"), tag(:br)) %></p>
+        </div>
     </div>
   </div>
 </section>
