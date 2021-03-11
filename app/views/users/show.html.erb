@@ -17,14 +17,14 @@
       <div class="result__contentsBox">
         <!-- スキル(アコーディオンメニュー）の部分 -->
         <div class="result__skill">
-          <% @user.skill_categories.each_with_index do |cat, i| %>
+          <% @user.skill_categories.each_with_index do |category, i| %>
             <%= check_box 'check1', i + 1, { id: "check1-#{i + 1}", class: "result__check" }, true, false %>
-            <%= label_tag "check1-#{i + 1}", cat.name, class: 'result__label' %>
+            <%= label_tag "check1-#{i + 1}", category.name, class: 'result__label' %>
 
             <!-- アコーディオンメニューの中身 -->
             <div class="result__skills">	
               <dl class="result__skilldata">
-                <% @user.user_skill_category_sets(cat.id).each do |skill_set| %>
+                <% @user.skill_sets_for_skill_category(category.id).each do |skill_set| %>
                   <div class="result__skillBox">
                     <dt class="result__skillTtl"><%= skill_set.name %></dt>
                     <dd class="result__skillCnt"><%= skill_set.level(@user.id) %></dd>
@@ -144,7 +144,7 @@
             </div>
             <div>
               <% if @user.port_url.present? %>
-                <%= link_to "ポートフォリオ", @user.port_url, class: "result__button button", target: :_blank %>
+                <%= link_to "ポートフォリオ", @user.port_url, class: "result__button button", target: '_blank' %>
               <% else %>
                 <a href="#" class="result__button button after disabled">ポートフォリオ</a>
               <% end %>

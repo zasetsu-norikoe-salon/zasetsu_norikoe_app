@@ -57,14 +57,14 @@
           </div>	<!-- 検索結果の個人情報の部分(Slack名〜のところ) -->
 
           <div class="result__skill">		<!-- スキル(アコーディオンメニュー）の部分 -->
-            <% user.skill_categories.each_with_index do |cat, skill_category_num| %>
-              <%= check_box "check#{user_num}", skill_category_num + 1, { id: "check#{user_num}-#{skill_category_num + 1}", class: "result__check" }, true, false %>
-              <%= label_tag "check#{user_num}-#{skill_category_num + 1}", cat.name, class: 'result__label' %>
+            <% user.skill_categories.each_with_index do |category, i| %>
+              <%= check_box "check#{user_num}", i + 1, { id: "check#{user_num}-#{i + 1}", class: "result__check" }, true, false %>
+              <%= label_tag "check#{user_num}-#{i + 1}", category.name, class: 'result__label' %>
 
               <!-- アコーディオンメニューの中身 -->
               <div class="result__skills">
                 <dl class="result__skilldata">
-                  <% user.user_skill_category_sets(cat.id).each do |skill_set| %>
+                  <% user.skill_sets_for_skill_category(category.id).each do |skill_set| %>
                     <div class="result__skillBox">
                       <dt class="result__skillTtl"><%= skill_set.name %></dt>
                       <dd class="result__skillCnt"><%= skill_set.level(user.id) %></dd>

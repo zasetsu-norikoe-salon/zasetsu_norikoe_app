@@ -42,7 +42,7 @@ class User < ApplicationRecord
     validates :port_url
   end
 
-  def user_skill_category_sets(cat_id)
-    skill_sets.where(skill_category_id: cat_id)
+  def skill_sets_for_skill_category(category_id)
+    skill_sets.where(skill_category_id: category_id)
   end
 end
