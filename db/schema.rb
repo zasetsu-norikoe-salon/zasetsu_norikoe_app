@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
   end
 
   create_table "skill_sets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "スキルセットデータ(使用言語, FW等)", force: :cascade do |t|
-    t.string "name", null: false, comment: "スキルセット名"
     t.bigint "skill_category_id", null: false, comment: "スキル属性ID"
+    t.string "name", null: false, comment: "スキルセット名"
     t.datetime "deleted_at", comment: "削除日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

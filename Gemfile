@@ -45,13 +45,22 @@ gem 'enumerize'
 # Font Awesome
 gem 'font-awesome-sass', '~> 5.15.1'
 
+# Kaminari
+gem 'kaminari'
+
 # Paranoia
 gem 'paranoia', '~> 2.2'
 
 # i18n
 gem 'rails-i18n', '~> 5.1'
 
+# Seed Fu Read more: https://github.com/mbleigh/seed-fu
+gem 'seed-fu'
+
 group :development, :test do
+  # N+1問題を検出する
+  gem 'bullet'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
@@ -85,6 +94,7 @@ group :development do
   # ER図を自動生成するためのgem
   gem 'rails-erd'
 
+  # Debug Tools
   gem 'pry-rails'
 end
 
@@ -100,5 +110,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem 'seed-fu'

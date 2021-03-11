@@ -194,6 +194,14 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "0人"
+          one: "1人中1-1表示"
+          other: "%{count}人中1-%{count}表示"
+      more_pages:
+        display_entries: "%{total}人中%{first}-%{last}人表示"
     select:
       prompt: 選択してください
     submit:
@@ -259,4 +267,5 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      hour_only: "%H時"
     pm: 午後
