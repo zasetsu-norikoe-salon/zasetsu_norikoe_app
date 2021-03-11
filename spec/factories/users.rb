@@ -5,7 +5,7 @@ FactoryBot.define do
     sequence(:email) { Faker::Internet.email(domain: 'example') }
     sequence(:password) { 'password' }
     sequence(:name) { Faker::Name.name }
-    sequence(:gender) { %i[not_known male female other].sample }
+    sequence(:gender) { User.enumerized_attributes[:gender].values.sample }
     sequence(:employment_type) { User.enumerized_attributes[:employment_type].values.sample }
     sequence(:zasetsu_count) { Faker::Number.digit }
 
