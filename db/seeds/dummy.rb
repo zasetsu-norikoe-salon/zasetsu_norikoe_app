@@ -4,7 +4,7 @@ module Dummy
   class << self
     def import_dummy_users_csv
       CSV.foreach('db/seeds/dummy_users_data.csv', headers: true) do |row|
-        User.create(
+        user = User.new(
           email: row['email'],
           name: row['name'],
           password: 'password',
@@ -26,6 +26,25 @@ module Dummy
           port_url: row['port_url'],
           zasetsu_count: 0
         )
+        unless row['Web開発'].nil?
+          user.skill_categories << SkillCategory.find_by(name: 'Web開発')
+        end
+        unless row['Web制作'].nil?
+          user.skill_categories << SkillCategory.find_by(name: 'Web制作')
+        end
+        unless row['デザイン'].nil?
+          user.skill_categories << SkillCategory.find_by(name: 'デザイン')
+        end
+        unless row['動画編集'].nil?
+          user.skill_categories << SkillCategory.find_by(name: '動画編集')
+        end
+        unless row['ライティング'].nil?
+          user.skill_categories << SkillCategory.find_by(name: 'ライティング')
+        end
+        unless row['マーケティング'].nil?
+          user.skill_categories << SkillCategory.find_by(name: 'マーケティング')
+        end
+        user.save
       end
 
       puts 'Import was successful.'
