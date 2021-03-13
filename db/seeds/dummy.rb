@@ -27,10 +27,6 @@ module Dummy
           zasetsu_count: 0
         )
         add_skills_to(user, row)
-
-        unless row['マーケティング'].nil?
-          user.skill_categories << SkillCategory.find_by(name: 'マーケティング')
-        end
         user.save
       end
 
