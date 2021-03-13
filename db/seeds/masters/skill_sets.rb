@@ -7,7 +7,7 @@ web_kaihatsu_skills =
      要件定義 基本設計 詳細設計 DB設計 ディレクター]
 
 web_seisaku_skills =
-  %w[WordPress LP ホームページ HTML/CS Sass/SCSS jQuery JavaScript Git 営業 XD figma Photoshop Illustrator PHP サイト設計 ディレクター
+  %w[WordPress LP ホームページ HTML/CSS Sass/SCSS jQuery JavaScript Git 営業 XD figma Photoshop Illustrator PHP サイト設計 ディレクター
      SEO MEO]
 
 web_design_skills =
