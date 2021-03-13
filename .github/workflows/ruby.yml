@@ -60,6 +60,7 @@ jobs:
           bundle install --jobs 4 --retry 3 --path vendor/bundle
       - name: DB Setup
         run: |
-          bundle exec rails db:setup
+          bundle exec rails db:create
+          bundle exec rails db:migrate
       - name: Run RSpec
         run: bundle exec rspec
