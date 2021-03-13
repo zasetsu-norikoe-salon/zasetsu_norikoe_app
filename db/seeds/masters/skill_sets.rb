@@ -14,7 +14,7 @@ web_design_skills =
   %w[XD figma Photoshop Illustrator ディレクター 営業 サイト設計 SEO UI/UX イラスト CG ゲーム ファッション バナー制作]
 
 video_edit_skills =
-  %w[Premiere\ Pro Final\ Cut\ Pro\ X After\ Effects ディレクター 営業 動画撮影 テロップ アニメーション Vyond YouTube TikTok 営業]
+  %w[Premiere\ Pro Final\ Cut\ Pro After\ Effects ディレクター 営業 動画撮影 テロップ アニメーション Vyond YouTube TikTok 営業]
 
 writing_skills =
   %w[SEO MEO WordPress ディレクター ブログ 自社メディア Twitter 営業 HTML/CSS]
