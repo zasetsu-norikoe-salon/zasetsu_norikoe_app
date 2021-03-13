@@ -9,11 +9,3 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 load Rails.root.join('db', 'seeds', "#{Rails.env.downcase}.rb")
-
-# if Rails.env.development?
-#   FactoryBot.create_list(:user, 30, :for_seed) do
-#     print '.'
-#   end
-#
-#   puts 'done!'
-# end
