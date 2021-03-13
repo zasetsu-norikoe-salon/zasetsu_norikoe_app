@@ -26,21 +26,8 @@ module Dummy
           port_url: row['port_url'],
           zasetsu_count: 0
         )
-        unless row['Web開発'].nil?
-          user.skill_categories << SkillCategory.find_by(name: 'Web開発')
-        end
-        unless row['Web制作'].nil?
-          user.skill_categories << SkillCategory.find_by(name: 'Web制作')
-        end
-        unless row['デザイン'].nil?
-          user.skill_categories << SkillCategory.find_by(name: 'デザイン')
-        end
-        unless row['動画編集'].nil?
-          user.skill_categories << SkillCategory.find_by(name: '動画編集')
-        end
-        unless row['ライティング'].nil?
-          user.skill_categories << SkillCategory.find_by(name: 'ライティング')
-        end
+        add_skills_to(user, row)
+
         unless row['マーケティング'].nil?
           user.skill_categories << SkillCategory.find_by(name: 'マーケティング')
         end
@@ -77,6 +64,57 @@ module Dummy
         :internship
       when '求職中'
         :job_seeker
+      end
+    end
+
+    def add_skills_to(user, resource)
+      unless resource['Web開発'].nil?
+        web_kaihatsu = SkillCategory.find_by(name: 'Web開発')
+        user.skill_categories << SkillCategory.find_by(name: 'Web開発')
+        resource['Web開発'].split(", ").each do |skill_name|
+          skill_set = SkillSet.find_by(name: skill_name, skill_category: web_kaihatsu)
+          user.skill_sets << skill_set
+        end
+      end
+      unless resource['Web制作'].nil?
+        web_seisaku = SkillCategory.find_by(name: 'Web制作')
+        user.skill_categories << SkillCategory.find_by(name: 'Web制作')
+        resource['Web制作'].split(", ").each do |skill_name|
+          skill_set = SkillSet.find_by(name: skill_name, skill_category: web_seisaku)
+          user.skill_sets << skill_set
+        end
+      end
+      unless resource['デザイン'].nil?
+        web_design = SkillCategory.find_by(name: 'デザイン')
+        user.skill_categories << SkillCategory.find_by(name: 'デザイン')
+        resource['デザイン'].split(", ").each do |skill_name|
+          skill_set = SkillSet.find_by(name: skill_name, skill_category: web_design)
+          user.skill_sets << skill_set
+        end
+      end
+      unless resource['動画編集'].nil?
+        video_edit = SkillCategory.find_by(name: '動画編集')
+        user.skill_categories << SkillCategory.find_by(name: '動画編集')
+        resource['動画編集'].split(", ").each do |skill_name|
+          skill_set = SkillSet.find_by(name: skill_name, skill_category: video_edit)
+          user.skill_sets << skill_set
+        end
+      end
+      unless resource['ライティング'].nil?
+        writing = SkillCategory.find_by(name: 'ライティング')
+        user.skill_categories << SkillCategory.find_by(name: 'ライティング')
+        resource['ライティング'].split(", ").each do |skill_name|
+          skill_set = SkillSet.find_by(name: skill_name, skill_category: writing)
+          user.skill_sets << skill_set
+        end
+      end
+      unless resource['マーケティング'].nil?
+        marketing = SkillCategory.find_by(name: 'マーケティング')
+        user.skill_categories << SkillCategory.find_by(name: 'マーケティング')
+        resource['マーケティング'].split(", ").each do |skill_name|
+          skill_set = SkillSet.find_by(name: skill_name, skill_category: marketing)
+          user.skill_sets << skill_set
+        end
       end
     end
   end
