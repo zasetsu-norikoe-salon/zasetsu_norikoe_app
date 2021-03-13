@@ -3,6 +3,7 @@ require 'csv'
 module Dummy
   class << self
     def import_dummy_users_csv
+      print 'Import Users from CSV'
       CSV.foreach('db/seeds/dummy_users_data.csv', headers: true) do |row|
         user = User.new(
           email: row['email'],
@@ -28,9 +29,10 @@ module Dummy
         )
         add_skills_to(user, row)
         user.save
+        print '.'
       end
 
-      puts 'Import was successful.'
+      puts 'done!'
     end
 
     def convert_gender(resource)
@@ -64,52 +66,13 @@ module Dummy
     end
 
     def add_skills_to(user, resource)
-      unless resource['Web開発'].nil?
-        web_kaihatsu = SkillCategory.find_by(name: 'Web開発')
-        user.skill_categories << SkillCategory.find_by(name: 'Web開発')
-        resource['Web開発'].split(", ").each do |skill_name|
-          skill_set = SkillSet.find_by(name: skill_name, skill_category: web_kaihatsu)
-          user.skill_sets << skill_set
-        end
-      end
-      unless resource['Web制作'].nil?
-        web_seisaku = SkillCategory.find_by(name: 'Web制作')
-        user.skill_categories << SkillCategory.find_by(name: 'Web制作')
-        resource['Web制作'].split(", ").each do |skill_name|
-          skill_set = SkillSet.find_by(name: skill_name, skill_category: web_seisaku)
-          user.skill_sets << skill_set
-        end
-      end
-      unless resource['デザイン'].nil?
-        web_design = SkillCategory.find_by(name: 'デザイン')
-        user.skill_categories << SkillCategory.find_by(name: 'デザイン')
-        resource['デザイン'].split(", ").each do |skill_name|
-          skill_set = SkillSet.find_by(name: skill_name, skill_category: web_design)
-          user.skill_sets << skill_set
-        end
-      end
-      unless resource['動画編集'].nil?
-        video_edit = SkillCategory.find_by(name: '動画編集')
-        user.skill_categories << SkillCategory.find_by(name: '動画編集')
-        resource['動画編集'].split(", ").each do |skill_name|
-          skill_set = SkillSet.find_by(name: skill_name, skill_category: video_edit)
-          user.skill_sets << skill_set
-        end
-      end
-      unless resource['ライティング'].nil?
-        writing = SkillCategory.find_by(name: 'ライティング')
-        user.skill_categories << SkillCategory.find_by(name: 'ライティング')
-        resource['ライティング'].split(", ").each do |skill_name|
-          skill_set = SkillSet.find_by(name: skill_name, skill_category: writing)
-          user.skill_sets << skill_set
-        end
-      end
-      unless resource['マーケティング'].nil?
-        marketing = SkillCategory.find_by(name: 'マーケティング')
-        user.skill_categories << SkillCategory.find_by(name: 'マーケティング')
-        resource['マーケティング'].split(", ").each do |skill_name|
-          skill_set = SkillSet.find_by(name: skill_name, skill_category: marketing)
-          user.skill_sets << skill_set
+      SkillCategory.find_each do |skill_category|
+        unless resource[skill_category.name].nil?
+          user.skill_categories << skill_category
+          resource[skill_category.name].split(", ").each do |skill_name|
+            skill_set = SkillSet.find_by(name: skill_name, skill_category: skill_category)
+            user.skill_sets << skill_set
+          end
         end
       end
     end
