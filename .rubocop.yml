@@ -48,3 +48,5 @@ Style/Documentation:
 Rails/Output:
   Exclude:
     - 'db/seeds.rb'
+    - 'db/seeds/masters/skill_sets.rb'
+    - 'db/seeds/masters/skill_categories.rb'

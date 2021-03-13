@@ -1,9 +1,14 @@
+# frozen_string_literal: true
+
 # スキルセットを配列で用意
 web_kaihatsu_skills =
-  %w[Ruby\ on\ Rails PHP CakePHP Laravel Java JavaScript Python MySQL Figma PostgreSQL SQL\ Server Oracle Docker AWS GCP Linux Swift Flutter Kotlin Android\ Java React Vue.js Node.js Nuxt.js HTML/CSS jQuery Git 要件定義 基本設計 詳細設計 DB設計 ディレクター]
+  %w[Ruby\ on\ Rails PHP CakePHP Laravel Java JavaScript Python MySQL Figma PostgreSQL SQL\ Server Oracle Docker AWS
+     GCP Linux Swift Flutter Kotlin Android\ Java React Vue.js Node.js Nuxt.js HTML/CSS jQuery Git
+     要件定義 基本設計 詳細設計 DB設計 ディレクター]
 
 web_seisaku_skills =
-  %w[WordPress LP ホームページ HTML/CSS HTML/CSS jQuery JavaScript Git 営業 XD figma Photoshop Illustrator PHP サイト設計 ディレクター SEO MEO]
+  %w[WordPress LP ホームページ HTML/CSS HTML/CSS jQuery JavaScript Git 営業 XD figma Photoshop Illustrator PHP サイト設計 ディレクター
+     SEO MEO]
 
 web_design_skills =
   %w[XD figma Photoshop Illustrator ディレクター 営業 サイト設計 SEO UI/UX イラスト CG ゲーム ファッション バナー制作]

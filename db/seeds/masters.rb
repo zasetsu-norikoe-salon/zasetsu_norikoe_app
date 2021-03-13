@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 files = %w[skill_categories skill_sets]
 
 ActiveRecord::Base.transaction do
