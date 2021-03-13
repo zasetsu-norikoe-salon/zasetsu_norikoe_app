@@ -8,10 +8,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if Rails.env.development?
-  FactoryBot.create_list(:user, 30, :for_seed) do
-    print '.'
-  end
-
-  puts 'done!'
-end
+load Rails.root.join('db', 'seeds', "#{Rails.env.downcase}.rb")
