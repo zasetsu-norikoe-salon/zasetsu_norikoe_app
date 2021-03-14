@@ -42,3 +42,7 @@ docker/mysql57/data/*
 
 # MacOS の隠しファイル
 .DS_Store
+
+# dotenv
+.env.development
+.env.production
