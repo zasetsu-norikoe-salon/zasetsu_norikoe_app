@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # 本番環境にBasic認証をかける。ユーザー名とパスワードは環境変数で管理する
   def basic_auth_only_production
     return unless Rails.env.production?
 
