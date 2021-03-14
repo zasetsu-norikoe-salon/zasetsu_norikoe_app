@@ -13,9 +13,11 @@ module Dummy
       get_file_from_google_drive_to(csv_file_path)
 
       CSV.foreach(csv_file_path, headers: true) do |row|
-        user = User.new(user_info_from(row))
-        add_skills_to(user, row)
-        user.save
+        init_user = User.find_or_initialize_by(user_info_from(row)) do |user|
+          user.password = 'password'
+        end
+        add_skills_to(init_user, row)
+        init_user.save
         print '.'
       end
 
@@ -39,7 +41,6 @@ module Dummy
       {
         email: resource['email'],
         name: resource['name'],
-        password: 'password',
         gender: convert_gender(resource['gender']),
         age: resource['age'],
         employment_type: convert_employment_type(resource['employment_type']),
