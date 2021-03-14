@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # devise
 gem 'devise'
 
+# dotenv
+gem 'dotenv-rails'
+
 # Enumerize
 gem 'enumerize'
 
