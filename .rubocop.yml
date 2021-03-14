@@ -45,8 +45,18 @@ RSpec/InstanceVariable:
 Style/Documentation:
   Enabled: false
 
+# put, print の使用を許可
 Rails/Output:
   Exclude:
     - 'db/seeds.rb'
     - 'db/seeds/masters/skill_sets.rb'
     - 'db/seeds/masters/skill_categories.rb'
+    - 'db/seeds/dummy.rb'
+
+Metrics/MethodLength:
+  # コメントを対象外にする
+  CountComments: false
+  Max: 80
+
+Metrics/AbcSize:
+  Max: 20

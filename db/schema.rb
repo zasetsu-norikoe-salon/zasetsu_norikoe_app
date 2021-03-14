@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_045425) do
   create_table "user_and_skill_set_relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "ユーザー・スキルセット紐付けデータ", force: :cascade do |t|
     t.bigint "user_id", null: false, comment: "ユーザーID"
     t.bigint "skill_set_id", null: false, comment: "スキルセットID"
-    t.integer "level", default: 3, null: false, comment: "経験値(1: 勉強中 2:実務経験あり 3:ベテラン)"
+    t.integer "level", default: 1, null: false, comment: "経験値(1: 勉強中 2:実務経験あり 3:ベテラン)"
     t.datetime "deleted_at", comment: "削除日時"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
