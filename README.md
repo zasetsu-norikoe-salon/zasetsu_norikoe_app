@@ -35,6 +35,9 @@ containerID   mysql:5.7                      "docker-entrypoint.s…"   10 hours
 
 6. Yay! You’re on Rails!
 
+### ダミーデータ投入
+`$ docker-compose exec app rails db:seed`を実行すると、初期メンバーとして登録してくれたメンバーの情報がDBに保存されます。
+
 ## コード解析
 **RuboCop**を使用して、静的コード解析（コーディング規約どおりに書かれているかをチェック）を行います。
 
