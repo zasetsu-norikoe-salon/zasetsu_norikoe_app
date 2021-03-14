@@ -13,11 +13,11 @@ module Dummy
       get_file_from_google_drive_to(csv_file_path)
 
       CSV.foreach(csv_file_path, headers: true) do |row|
-        user = User.find_or_initialize_by(user_info_from(row)) do |user|
+        init_user = User.find_or_initialize_by(user_info_from(row)) do |user|
           user.password = 'password'
         end
-        add_skills_to(user, row)
-        user.save
+        add_skills_to(init_user, row)
+        init_user.save
         print '.'
       end
 
