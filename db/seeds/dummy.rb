@@ -6,6 +6,8 @@ module Dummy
   class << self
     def import_dummy_users_csv
       print 'Import Users from CSV'
+      # TODO: ユーザーのデータを下記のGoogleDriveのCSVファイルから取得するようにしたい　
+      # https://docs.google.com/spreadsheets/d/1RkHkDT5EHPPzvunCaDA6XszttGw5GoCk0J2vPgTXI3c/edit?usp=sharing
       CSV.foreach('db/seeds/dummy_users_data.csv', headers: true) do |row|
         user = User.new(user_info_from(row))
         add_skills_to(user, row)
