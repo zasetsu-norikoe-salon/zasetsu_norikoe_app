@@ -294,22 +294,22 @@
         &__txt {
             max-width: 234px;
             width: 50%;
-            height: 250px;
+            height: 260px;
             margin-left: 17px;
             padding: 15px;
             border: 5px dashed $sub-color;
             font-size: 1.4rem;
             display: -webkit-box;
-            -webkit-line-clamp: "2";
+            -webkit-line-clamp: 11;
             -webkit-box-orient: vertical;
             overflow: hidden;
             word-break: break-all;
             @include media-sp {
                 margin: 34px auto 85px;
-                height: 140px;
+                height: 150px;
                 max-width: 600px;
                 width: 100%;
-                -webkit-line-clamp: "5";
+                -webkit-line-clamp: 6;
             }
         }
 
