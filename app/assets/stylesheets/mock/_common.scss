@@ -77,12 +77,15 @@ body {
     }
 
     &__ttl {
-        font-size: 2rem;
-        font-family: "Hannotate SC", sans-serif;
-        color: $txt-color-white;
         @include media-tab {
             margin: 0 auto;
         }
+    }
+
+    &__link {
+        font-size: 2rem;
+        font-family: "Hannotate SC", sans-serif;
+        color: $txt-color-white;
     }
 }
 
@@ -128,6 +131,12 @@ body {
     }
 
     &__link {
+        position: relative;
+        left: -3px;
+        display: inline-block;
+        width: 53px;
+        height: 53px;
+        border-radius: 50%;
         color: #666;
         font-size: 2rem;
         text-decoration: none;
