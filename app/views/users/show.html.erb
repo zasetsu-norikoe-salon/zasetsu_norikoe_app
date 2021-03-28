@@ -1,4 +1,9 @@
+<% content_for :style do %>
+  <%= stylesheet_link_tag 'mock/users/show', media: 'all'%>
+<% end %>
+
 <p id="notice"><%= notice %></p>
+
 <section class="search">
   <div class="result_contain inner">
     <div class="section__head">
@@ -34,7 +39,6 @@
             </div>
             <!-- アコーディオンメニューの中身 -->
           <% end %>
-
 
         </div>
         <!-- スキル(アコーディオンメニュー）の部分 -->
