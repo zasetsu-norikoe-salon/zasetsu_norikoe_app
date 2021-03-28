@@ -26,21 +26,22 @@ jobs:
 
   rspec:
     # ジョブを実行する仮想マシンを選択（ubuntu/macOS/Windows)
-    # TODO: 2021年2月28日現在、ubuntu-latest(18.04)だとmysqlが起動できないエラーになるので、16.04を使用
+    # MySQL5.7を使用したいので、16.04を指定
     runs-on: ubuntu-16.04
     env:
       RAILS_ENV: test
+      DB_USER: root
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
+      DB_PASSWORD: root # TODO: GitHub Actions では、MYSQL_ROOT_PASSWORDで指定しても、パスワードがrootになってしまう。
     services:
       db:
         image: mysql:5.7
-        ports:
-          - 3306:3306
         env:
           MYSQL_USER: root
-          MYSQL_ROOT_PASSWORD: password
-          BIND-ADDRESS: 0.0.0.0 # 全ての接続をを許可する
+#          MYSQL_ROOT_PASSWORD: password TODO: 2021/03/28 なぜかパスワードの設定ができなくなってしまったので、コメントアウト
+        ports:
+          - 3306:3306
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
@@ -60,7 +61,13 @@ jobs:
           bundle install --jobs 4 --retry 3 --path vendor/bundle
       - name: DB Setup
         run: |
+          sudo systemctl start mysql
           bundle exec rails db:create
           bundle exec rails db:migrate
       - name: Run RSpec
         run: bundle exec rspec
+
+        # TODO: workflowのデバッグを行いたい場合は以下を使う
+#      - name: Debug
+#        if: ${{ failure() }}
+#        uses: mxschmitt/action-tmate@v3
