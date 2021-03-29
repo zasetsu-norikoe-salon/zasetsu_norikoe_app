@@ -2,6 +2,8 @@
 <html lang="ja">
   <head>
     <title>挫折乗り越えサロン Member Site</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,8 +15,8 @@
   <body>
     <header class="header">
       <div class="header__container">
-        <h1>
-          <%= link_to '挫折乗り越えサロンMember Site', root_path, class: 'header__ttl' %>
+        <h1 class="header__ttl">
+          <%= link_to '挫折乗り越えサロンMember Site', root_path, class: 'header__link' %>
         </h1>
         <% if @path.is('users#index') %>
           <form id="" action="" method="get" class="header__search">

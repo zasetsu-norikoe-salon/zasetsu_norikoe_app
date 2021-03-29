@@ -1,129 +1,394 @@
 // 定義--------------------------
-  // 色
-  $main-color:#FDC32D;
-  $bg-color:#FDFCD3;
-  $sub-color:#9D6907;
-  $level-color:#68B77E;
-  $txt-color-white:#FCF7F7;
+// 色
+$main-color: #fdc32d;
+$bg-color: #fdfcd3;
+$sub-color: #9d6907;
+$level-color: #68b77e;
+$txt-color-white: #fcf7f7;
 
-  // フォントサイズ
-  $DEFAULT_FONT_SIZE: 62.5%;
+// フォントサイズ
+$DEFAULT_FONT_SIZE: 62.5%;
 
-  // フォント
-  $DEFAULT_FONT_FAMILY: 'ヒラギノ丸ゴ ProN', sans-serif;
+// フォント
+$DEFAULT_FONT_FAMILY: "ヒラギノ丸ゴ ProN", sans-serif;
 
+// メディアクエリ
+$MEDIA_TAB: 1180px;
+$MEDIA_SP: 768px;
 
-  // メディアクエリ
-  $MEDIA_TAB: 1024px;
-  $MEDIA_SP: 768px;
+//z-index
+$z-index: (
+    header: 999,
+);
 
-	//z-index
-	$z-index:(
-		header:999,
-
-	);
+$header-height: 88px;
 
 // 定義--------------------------
+// mixin--------------------------
 
+@mixin media-tab {
+    @media screen and (max-width: #{$MEDIA_TAB}) {
+        @content;
+    }
+}
+
+@mixin media-sp {
+    @media screen and (max-width: #{$MEDIA_SP}) {
+        @content;
+    }
+}
+// mixin--------------------------
 
 // reset.scss読み込み--------------------------
-@import  "_reset";
+@import "_reset";
 // reset.scss読み込み--------------------------
-
 
 // 共通パーツ--------------------------
-html,body{
-  font-size: $DEFAULT_FONT_SIZE;
-  font-family: $DEFAULT_FONT_FAMILY;
-	background: $bg-color;
+html,
+body {
+    font-size: $DEFAULT_FONT_SIZE;
+    font-family: $DEFAULT_FONT_FAMILY;
+    background: $bg-color;
 }
 
-.inner{
-  max-width: 1200px;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.header{
-  position: fixed;
-  width: 100%;
-  height: 88px;
-  padding: 27px 0 33px;
-  background-color: $main-color;
-  border: 3px solid $sub-color;
-	z-index: map-get($z-index,header);
-
-  &__container{
-    max-width: 1218px;
-    width: 95%;
-		height: 100%;
+.inner {
+    max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
-  }
+}
 
-  &__ttl{
+.header {
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    padding: 27px 0 33px;
+    background-color: $main-color;
+    border: 3px solid $sub-color;
+    z-index: map-get($z-index, header);
+    @include media-tab {
+        height: 48px;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        max-width: 1218px;
+        width: 95%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    &__ttl {
+        @include media-tab {
+            margin: 0 auto;
+        }
+    }
+
+    &__link {
+        font-size: 2rem;
+        font-family: "Hannotate SC", sans-serif;
+        color: $txt-color-white;
+    }
+
+    &__search {
+        position: relative;
+        max-width: 360px;
+        width: 100%;
+        height: 40px;
+        margin: 0 0 0 117px;
+        @include media-sp {
+            display: none;
+            height: 50px;
+            margin-top: 14px;
+            margin-left: 0;
+        }
+    }
+    &__searchArea {
+        position: relative;
+        width: 100%;
+        padding: 12px 50px 12px 31px;
+        border: 1px solid #afadad;
+        border-radius: 15px;
+        box-shadow: 0 3px 6px #00000029;
+        outline: 0;
+        background: #fff;
+        font-size: 1.6rem;
+        @include media-sp {
+            height: 100%;
+            padding: 12px 31px 12px 50px;
+        }
+        &::placeholder {
+            color: #bdc3c7;
+        }
+    }
+    &__searchBtn {
+        position: absolute;
+        right: 12px; /*アイコン左右の位置調整*/
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background: none;
+        font-size: 2rem; /*アイコンサイズ*/
+        color: #666;
+
+        @include media-sp {
+            display: none;
+        }
+
+        &:hover {
+            color: #7fbfff;
+        }
+    }
+
+    &__spsearchLogo {
+        @extend .header__searchBtn;
+        @include media-sp {
+            display: block;
+            top: 55%;
+            left: 15px;
+        }
+    }
+}
+
+.section {
+    &__ttl {
+        font-size: 2rem;
+        font-weight: normal;
+        color: #666666;
+    }
+}
+
+.button {
+    display: inline-block;
+    min-width: 160px;
+    height: 65px;
+    line-height: calc(65px - (3px * 2));
+    padding: 0 14px;
+    text-align: center;
+    background-color: $main-color;
+    box-shadow: 4px 8px 8px #a7600ef4;
+    border: 3px solid $sub-color;
+    border-radius: 15px;
     font-size: 2rem;
-    font-family:'Hannotate SC', sans-serif ;
     color: $txt-color-white;
-  }
 }
 
-.section{
+.pager {
+    margin-top: 157px;
+    padding-bottom: 103px;
+    &__items {
+        display: flex;
+        justify-content: center;
+    }
 
-  &__ttl{
-    font-size: 2rem;
-    font-weight: normal;
-    color: #666666;
-  }
+    &__item {
+        width: 53px;
+        height: 53px;
+        line-height: 47px;
+        background: #f8f8f5;
+        border: 3px solid $sub-color;
+        border-radius: 50%;
+        text-align: center;
+    }
+
+    &__link {
+        position: relative;
+        left: -3px;
+        display: inline-block;
+        width: 53px;
+        height: 53px;
+        border-radius: 50%;
+        color: #666;
+        font-size: 2rem;
+        text-decoration: none;
+    }
+
+    &Item.is-active {
+        background: $main-color;
+
+        .pager__link {
+            color: #fff;
+        }
+    }
 }
 
-.button{
-  display: inline-block;
-  min-width: 160px;
-  height: 65px;
-  line-height: calc(65px - (3px * 2));
-  padding: 0 14px;
-  text-align: center;
-  background-color: $main-color;
-  box-shadow: 4px 8px 8px #A7600EF4;
-  border: 3px solid $sub-color;
-  border-radius: 15px;
-  font-size: 2rem;
-  color: $txt-color-white;
-
+.media-sp {
+    display: none;
+    @include media-sp() {
+        display: block;
+    }
 }
 
-.pager{
-	margin-top: 157px;
-	padding-bottom: 103px;
-	&__items{
-		display: flex;
-		justify-content: center;
-	}
-
-	&__item{
-		width: 53px;
-		height: 53px;
-		line-height: 47px;
-		background: #F8F8F5;
-		border: 3px solid $sub-color;
-		border-radius: 50%;
-		text-align: center;
-	}
-
-	&__link{
-		color: #666;
-		font-size: 2rem;
-		text-decoration: none;
-	}
-
-	&Item.is-active{
-		background: $main-color;
-
-		.pager__link{
-			color:#fff;
-		}
-	}
+.search {
+    padding: 160px 0 40px 0;
+    @include media-sp {
+        padding-top: 80px;
+    }
 }
 
+.result {
+    // 検索結果　個人プロフィール部分------------------------
+    &__card {
+        position: relative;
+        display: flex;
+        margin-top: 45px;
+        padding: 23px 40px;
+        background: #fff;
+        border-radius: 45px;
+        box-shadow: 0 3px 6px #00000029;
+        @include media-tab {
+            padding-bottom: 100px;
+            justify-content: space-evenly;
+        }
+        @include media-sp {
+            flex-direction: column;
+            padding: 23px;
+        }
+    }
+
+    // 属性------------------------
+    &__prof {
+        max-width: 250px;
+        width: 40%;
+        @include media-sp {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    &__data {
+        @include media-sp {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__dataBox {
+        display: flex;
+
+        &:not(:first-child) {
+            margin-top: 20px;
+        }
+        @include media-sp {
+            width: 50%;
+            margin-bottom: 20px;
+            &:not(:first-child) {
+                margin-top: 0;
+            }
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+
+    &__dataTtl {
+        font-size: 1.5rem;
+        color: $sub-color;
+    }
+
+    &__dataCnt {
+        display: inline-block;
+        margin-left: 20px;
+        font-size: 1.5rem;
+    }
+    // 属性------------------------
+
+    // スキル------------------------
+    &__check {
+        display: none;
+    }
+
+    &__skill {
+        width: 212px;
+        @include media-sp {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+    &__label {
+        position: relative;
+        z-index: 1;
+        display: block;
+        height: 48px;
+        line-height: calc(48px - (3px * 2));
+        padding: 0 14px;
+        background: $bg-color;
+        border: 3px solid $sub-color;
+        border-radius: 16px;
+        font-size: 2rem;
+        text-align: center;
+        color: $sub-color;
+
+        &::after {
+            content: "＋";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+            background: none;
+            font-size: 2rem;
+        }
+    }
+    // スキル------------------------
+
+    // スキル　アコーディオンで見える部分------------------------
+    &__skills {
+        display: block;
+        height: 0;
+        margin: -15px 0 17px;
+        box-shadow: 0 3px 6px #00000029;
+        border-radius: 0 0 30px 30px;
+        opacity: 0;
+        transition: 0.5s;
+        visibility: hidden;
+        font-size: 1.2rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @include media-sp {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__check:checked + .result__label::after {
+        content: "ー";
+    }
+    &__check:checked + .result__label + .result__skills {
+        height: auto;
+        padding: 25px 15px 15px;
+        transition: 0.5s;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__skillBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+    }
+    &__skillTtl {
+        width: 45%;
+    }
+
+    &__skillCnt {
+        width: 55%;
+        padding: 6px 25px;
+        border-radius: 15px;
+        background: $level-color;
+        font-size: 1.2rem;
+        color: $txt-color-white;
+        text-align: center;
+    }
+    // スキル　アコーディオンで見える部分------------------------
+}
 
 // 共通パーツ--------------------------
