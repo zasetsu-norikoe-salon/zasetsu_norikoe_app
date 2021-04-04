@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 require 'csv'
-require 'google_drive'
 
 module Dummy
   class << self
     def import_dummy_users_csv
       print 'Import Users from CSV'
 
-      # GoogleDriveからファイルを取得する
       csv_file_path = 'db/seeds/dummy_users_data.csv'
-      get_file_from_google_drive_to(csv_file_path)
 
       CSV.foreach(csv_file_path, headers: true) do |row|
         init_user = User.find_or_initialize_by(user_info_from(row)) do |user|
@@ -21,20 +18,7 @@ module Dummy
         print '.'
       end
 
-      # ファイルを削除
-      File.delete(csv_file_path)
       puts 'done!'
-    end
-
-    def get_file_from_google_drive_to(path)
-      # 設定ファイルを読み込み
-      session = GoogleDrive::Session.from_config('db/seeds/config.json')
-      # 取得したいファイルのKey
-      dummy_users_data_file_key = '1RkHkDT5EHPPzvunCaDA6XszttGw5GoCk0J2vPgTXI3c'
-      # Keyからスプレッドシートを取得
-      sheet = session.spreadsheet_by_key(dummy_users_data_file_key)
-      # CSV形式でダウンロード TODO: ファイルをダウンロードせず、情報のみ取得したい
-      sheet.export_as_file(path)
     end
 
     def user_info_from(resource)
