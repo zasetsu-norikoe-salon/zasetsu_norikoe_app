@@ -46,9 +46,6 @@ gem 'enumerize'
 # Font Awesome
 gem 'font-awesome-sass', '~> 5.15.1'
 
-# GoogleDrive Api
-gem 'google_drive'
-
 # Kaminari
 gem 'kaminari'
 
