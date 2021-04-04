@@ -14,8 +14,6 @@ RUN gem install bundler
 ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
-RUN bundle install
-
 # Entrykitをダウンロードし、実行できるように設定
 ENV ENTRYKIT_VERSION 0.4.0
 RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
@@ -25,7 +23,7 @@ RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERS
     && chmod +x /bin/entrykit \
     && entrykit --symlink
 
-# gem rails-erd を実行し、ER図を生成
-ENTRYPOINT ["prehook", "bundle exec erd", "--"]
+# docker-compose up を実行するたびにbundle installを実行する
+ENTRYPOINT ["prehook", "bundle install", "--"]
 
 ADD . $APP_ROOT
