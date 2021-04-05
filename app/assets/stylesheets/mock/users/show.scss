@@ -38,6 +38,7 @@
   display: flex;
 }
 
+// プロフィール＆スキル
 .result {
   &__contents {
     height: 789px;
@@ -100,7 +101,7 @@
 }
 
 
-
+// SNS部分
 .result__sns {
 
   &--twitter {
@@ -153,7 +154,7 @@
     text-decoration: none;
     color: black;
   }
-  
+
   &--twitter--mono {
     width: 30px;
     height: 30px;
@@ -224,6 +225,7 @@
 
 }
 
+// フリーテキストエリア
 .result__txtBox {
   width: 90%;
   display: inline-block;
