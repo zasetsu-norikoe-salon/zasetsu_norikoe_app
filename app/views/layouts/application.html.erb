@@ -15,8 +15,11 @@
   <body>
     <header class="header">
       <div class="header__container">
+				<div class="header__img">
+					<%= image_tag 'mv_character@2x.png' %>
+				</div> 
         <h1 class="header__ttl">
-          <%= link_to '挫折乗り越えサロンMember Site', root_path, class: 'header__link' %>
+					<%= link_to image_tag("logo.svg", class: 'header__link'), "/" %>
         </h1>
         <% if @path.is('users#index') %>
           <form id="" action="" method="get" class="header__search">
