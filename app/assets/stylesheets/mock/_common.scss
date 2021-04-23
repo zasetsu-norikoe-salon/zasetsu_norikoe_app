@@ -61,12 +61,11 @@ body {
     position: fixed;
     width: 100%;
     height: $header-height;
-    padding: 27px 0 33px;
-    background-color: $main-color;
-    border: 3px solid $sub-color;
+    background-color: $level-color;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.16);
     z-index: map-get($z-index, header);
     @include media-tab {
-        height: 48px;
+        height: 60px;
     }
 
     &__container {
@@ -79,16 +78,20 @@ body {
         margin: 0 auto;
     }
 
-    &__ttl {
-        @include media-tab {
-            margin: 0 auto;
+    &__img {
+        height: 95%;
+        margin-top: auto;
+        margin-right: 10px;
+        img {
+            height: 100%;
         }
     }
 
+    &__ttl {
+    }
+
     &__link {
-        font-size: 2rem;
-        font-family: "Hannotate SC", sans-serif;
-        color: $txt-color-white;
+        width: 100%;
     }
 
     &__search {
@@ -96,8 +99,8 @@ body {
         max-width: 360px;
         width: 100%;
         height: 40px;
-        margin: 0 0 0 117px;
-        @include media-sp {
+        margin-left: 80px;
+        @include media-tab {
             display: none;
             height: 50px;
             margin-top: 14px;
@@ -114,7 +117,7 @@ body {
         outline: 0;
         background: #fff;
         font-size: 1.6rem;
-        @include media-sp {
+        @include media-tab {
             height: 100%;
             padding: 12px 31px 12px 50px;
         }
@@ -133,7 +136,7 @@ body {
         font-size: 2rem; /*アイコンサイズ*/
         color: #666;
 
-        @include media-sp {
+        @include media-tab {
             display: none;
         }
 
@@ -144,7 +147,7 @@ body {
 
     &__spsearchLogo {
         @extend .header__searchBtn;
-        @include media-sp {
+        @include media-tab {
             display: block;
             top: 55%;
             left: 15px;
@@ -214,6 +217,13 @@ body {
     }
 }
 
+.media-tab {
+    display: none;
+    @include media-tab() {
+        display: block;
+    }
+}
+
 .media-sp {
     display: none;
     @include media-sp() {
@@ -223,7 +233,7 @@ body {
 
 .search {
     padding: 160px 0 40px 0;
-    @include media-sp {
+    @include media-tab {
         padding-top: 80px;
     }
 }

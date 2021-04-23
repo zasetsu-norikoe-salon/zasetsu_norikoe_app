@@ -22,14 +22,14 @@
             position: absolute;
             top: 120px;
             right: 20px;
-            @include media-sp {
+            @include media-tab {
                 display: none;
             }
         }
 
         &__spBtn {
             display: none;
-            @include media-sp {
+            @include media-tab {
                 display: block;
                 max-width: 160px;
                 margin: 17px auto 0;
