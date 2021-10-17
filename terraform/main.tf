@@ -137,6 +137,64 @@ resource "aws_lb_listener" "main" {
   }
 }
 
+# SSMパラメーターストア(環境変数)
+# 機密情報のパラメーターはTerraformではダミーの値を設定して、あとでaws-cliから更新する
+resource "aws_ssm_parameter" "rails_env" {
+  name = "rails_env"
+  value = "production"
+  type = "String"
+  description = "RAILS_ENV"
+}
+
+resource "aws_ssm_parameter" "tz" {
+  name = "tz"
+  value = "Japan"
+  type = "String"
+  description = "TZ"
+}
+
+resource "aws_ssm_parameter" "db_name" {
+  name = "/db/name"
+  value = "zasetsu_norikoe_app_production"
+  type = "String"
+  description = "DB_NAME"
+}
+
+resource "aws_ssm_parameter" "db_user_name" {
+  name = "/db/user_name"
+  value = "zasetsu_norikoe_app"
+  type = "String"
+  description = "DB_USERNAME"
+}
+
+resource "aws_ssm_parameter" "db_password" {
+  name = "/db/password"
+  value = "db_pass"
+  type = "SecureString"
+  description = "DB_PASSWORD"
+}
+
+resource "aws_ssm_parameter" "db_host" {
+  name = "/db/host"
+  value = "db_host"
+  type = "SecureString"
+  description = "DB_HOST"
+}
+
+resource "aws_ssm_parameter" "basic_auth_name" {
+  name = "/db/basic_auth_name"
+  value = "basic_auth_name"
+  type = "SecureString"
+  description = "BASIC_AUTH_NAME"
+}
+
+resource "aws_ssm_parameter" "basic_auth_password" {
+  name = "/db/basic_auth_password"
+  value = "basic_auth_password"
+  type = "SecureString"
+  description = "BASIC_AUTH_PASSWORD"
+}
+
 # ECS Cluster(ECSクラスタ)
 # https://www.terraform.io/docs/providers/aws/r/ecs_cluster.html
 resource "aws_ecs_cluster" "main" {
@@ -247,8 +305,7 @@ module "ecs_sg_http" {
 # Route53
 
 data "aws_route53_zone" "main" {
-  #name = "zns-member-site.com"
-  name="boo-boo2021.com"
+  name="zns-member-site.com"
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
@@ -297,4 +354,96 @@ module "ecs_task_execution_role" {
   name       = "ecs_task_execution"
   identifier = "ecs-tasks.amazonaws.com"
   policy     = data.aws_iam_policy_document.ecs_task_execution.json
+}
+
+# RDS
+
+# SecurityGroup(RDS)
+# https://www.terraform.io/docs/providers/aws/r/security_group.html
+
+module "rds_sg" {
+  source = "./security_group"
+  name = "zns-member-site-rds-sg"
+  vpc_id = aws_vpc.main.id
+  port = 3306
+  cidr_blocks = ["0.0.0.0/0"]
+  description = ""
+}
+
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_subnet_group
+resource "aws_db_subnet_group" "main" {
+  name = "zns-member-site-rds-subnet-group"
+  subnet_ids = [aws_subnet.public_1a.id,aws_subnet.public_1c.id]
+
+  tags = {
+    Name = "zns-member-site-rds-subnet-group"
+  }
+}
+
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance
+resource "aws_db_instance" "main" {
+  identifier = "zns-member-site-db"
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t3.micro"
+  allocated_storage   = 20
+  storage_type        = "gp2"
+  name = "zasetsu_norikoe_app_production"
+  username            = "zasetsu_norikoe_app"
+  password            = "password" # 構築後すぐマスターパスワードを変更すること
+  port                = 3306
+  # skip_final_snapshot = true
+
+  vpc_security_group_ids = [module.rds_sg.security_group_id]
+  db_subnet_group_name = aws_db_subnet_group.main.name
+}
+
+# ***************
+# Rails deploy
+# ***************
+
+# App ECRリポジトリ
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository
+resource "aws_ecr_repository" "app" {
+  name = "zns-member-site-ecr-app"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+# App ECRライフサイクルポリシー
+# https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/LifecyclePolicies.html
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy
+resource "aws_ecr_lifecycle_policy" "app" {
+  repository = aws_ecr_repository.app.name
+
+  policy = <<EOF
+  {
+    "rules": [
+      {
+        "rulePriority": 1,
+        "description": "Keep last 10 release tagged images",
+        "selection": {
+          "tagStatus": "tagged",
+          "tagPrefixList": ["release"],
+          "countType": "imageCountMoreThan",
+          "countNumber": 10
+        },
+        "action": {
+          "type": "expire"
+        }
+      }
+    ]
+  }
+  EOF
+}
+
+# Nginx ECR
+resource "aws_ecr_repository" "nginx" {
+  name = "zns-member-site-ecr-nginx"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 }

@@ -4,20 +4,42 @@ services:
     container_name: rails524
     tty: true # binding.pryするために必要
     stdin_open: true # binding.pryするために必要
-    build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    command:
+      bundle exec puma -C config/puma.rb
     volumes:
       - .:/zasetsu_norikoe_app # ローカルのディレクトリをコンテナ上にマウントする
-    ports:
-      - '3000:3000'
+      - public-data:/zasetsu_norikoe_app/public
+      - tmp-data:/zasetsu_norikoe_app/tmp
+      - log-data:/zasetsu_norikoe_app/log
+    depends_on:
+      - db
   db:
     # TODO: M1 Mac Docker preview版ではTAGでMysqlのイメージを指定するとエラーになるので、DIGESTで指定してあります。
     image: mysql:5.7@sha256:b3b2703de646600b008cbb2de36b70b21e51e7e93a7fca450d2b08151658b2dd
     container_name: mysql57
     volumes:
-      - ./docker/mysql57/data:/var/lib/mysql #データの永続化
+      - mysql57_data:/var/lib/mysql #データの永続化
     ports:
       - "3306:3306"
     environment:
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: password
+  nginx:
+    build:
+      context: nginx
+    volumes:
+      - public-data:/docker-test/public
+      - tmp-data:/docker-test/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  mysql57_data:

@@ -4,26 +4,34 @@ RUN apt-get update -qq && \
                        libpq-dev \
                        nodejs \
                        graphviz \
-                       wget
+                       wget \
+                       vim 
 RUN mkdir /zasetsu_norikoe_app
 ENV APP_ROOT /zasetsu_norikoe_app
 WORKDIR $APP_ROOT
 
-RUN gem install bundler
+RUN gem install bundler:2.2.15
 
 ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
-# Entrykitをダウンロードし、実行できるように設定
-ENV ENTRYKIT_VERSION 0.4.0
-RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && mv entrykit /bin/entrykit \
-    && chmod +x /bin/entrykit \
-    && entrykit --symlink
+RUN bundle install
 
-# docker-compose up を実行するたびにbundle installを実行する
-ENTRYPOINT ["prehook", "bundle install", "--"]
+# Entrykitをダウンロードし、実行できるように設定
+# ENV ENTRYKIT_VERSION 0.4.0
+# RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+#     && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+#     && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+#     && mv entrykit /bin/entrykit \
+#     && chmod +x /bin/entrykit \
+#     && entrykit --symlink
+
+# # docker-compose up を実行するたびにbundle installを実行する
+# ENTRYPOINT ["prehook", "bundle install", "--"]
 
 ADD . $APP_ROOT
+
+RUN mkdir -p $APP_ROOT/tmp/sockets
+RUN mkdir $APP_ROOT/tmp/pids
+
+VOLUME $APP_ROOT/tmp
