@@ -28,6 +28,10 @@ RUN bundle install
 
 ADD . $APP_ROOT
 
+RUN yarn install --check-files
+
+RUN bundle exec rails assets:precompile RAILS_ENV=$RAILS_ENV
+
 RUN mkdir -p $APP_ROOT/tmp/sockets
 RUN mkdir $APP_ROOT/tmp/pids
 

@@ -114,8 +114,8 @@ module "alb_sg_http" {
   name = "zns-member-site-alb-sg"
   vpc_id = aws_vpc.main.id
   port = 80
-  cidr_blocks = ["36.13.255.18/32"]
-  description = "sagawa IP"
+  cidr_blocks = ["0.0.0.0/0"]
+  description = ""
 }
 
 # Listener
@@ -270,7 +270,7 @@ resource "aws_ecs_service" "main" {
   launch_type     = "FARGATE"
   # https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/platform_versions.html#available_pv
   platform_version                  = "1.4.0"
-  health_check_grace_period_seconds = 60
+  health_check_grace_period_seconds = 3600
 
   network_configuration {
     assign_public_ip = true
@@ -299,7 +299,7 @@ module "ecs_sg_http" {
   vpc_id = aws_vpc.main.id
   port = 80
   cidr_blocks = [aws_vpc.main.cidr_block]
-  description = "sagawa IP"
+  description = ""
 }
 
 # Route53
