@@ -1,0 +1,83 @@
+[
+  {
+    "name": "app",
+    "image": "985789086830.dkr.ecr.ap-northeast-1.amazonaws.com/zns-member-site-ecr-app",
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "production_app",
+        "awslogs-group": "/ecs/zns-member-site"
+      }
+    },
+    "secrets": [
+      {
+        "name": "RAILS_ENV",
+        "valueFrom": "rails_env"
+      },
+      {
+        "name": "TZ",
+        "valueFrom": "tz"
+      },
+      {
+        "name": "DB_NAME",
+        "valueFrom": "/db/name"
+      },
+      {
+        "name": "DB_USERNAME",
+        "valueFrom": "/db/user_name"
+      },
+      {
+        "name": "DB_PASSWORD",
+        "valueFrom": "/db/password"
+      },
+      {
+        "name": "DB_HOST",
+        "valueFrom": "/db/host"
+      },
+      {
+        "name": "BASIC_AUTH_NAME",
+        "valueFrom": "/db/basic_auth_name"
+      },
+      {
+        "name": "BASIC_AUTH_PASSWORD",
+        "valueFrom": "/db/basic_auth_password"
+      }
+    ],
+    "command": [
+      "bash",
+      "-c",
+      "bundle exec rails db:migrate && bundle exec rails assets:precompile && bundle exec pumactl start && bundle exec puma -C config/puma.rb && bundle exec rails db:seed"
+    ],
+    "workingDirectory": "/zasetsu_norikoe_app",
+    "essential": true
+  },
+  {
+    "name": "nginx",
+    "image": "985789086830.dkr.ecr.ap-northeast-1.amazonaws.com/zns-member-site-ecr-nginx",
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "nginx",
+        "awslogs-group": "/ecs/zns-member-site"
+      }
+    },
+    "portMappings": [
+      {
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ],
+    "workingDirectory": "/zasetsu_norikoe_app",
+    "volumesFrom": [
+      {
+        "sourceContainer": "app",
+        "readOnly": false
+      }
+    ],
+    "essential": true
+  }
+]

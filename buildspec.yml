@@ -1,0 +1,28 @@
+# https://blog.spacemarket.com/code/ci-cd-codepipeline/
+# https://docs.aws.amazon.com/ja_jp/codepipeline/latest/userguide/ecs-cd-pipeline.html
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 19
+  pre_build:
+    commands:
+    - echo Logging in to Amazon ECR...
+    - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+    - REPOSITORY_URI=$(aws ecr describe-repositories --repository-names zns-member-site-ecr --output text --query "repositories[0].repositoryUri")
+  build:
+    commands:
+    - echo Build started on `date`
+    - echo Building the Docker images...
+    - docker build -t $REPOSITORY_URI:latest .
+  post_build:
+    commands:
+    - echo Build completed on `date`
+    - echo Pushing the Docker image...
+    - docker push $REPOSITORY_URI:latest
+    - echo Writing image definitions file...
+    - printf '[{"name":"app","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json

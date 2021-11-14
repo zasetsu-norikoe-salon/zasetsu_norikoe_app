@@ -1,0 +1,9 @@
+# コピーして、.sample拡張子を外すとterraform.tfvars(terraformの環境変数ファイル)として利用できます。
+# 値は機密情報なので管理者に問い合わせてください。
+
+aws_access_key = "<aws_access_key>"
+aws_secret_key = "<aws_secret_key>"
+
+# RDS
+database_username = "zasetsu_norikoe_app"
+database_password = ""
