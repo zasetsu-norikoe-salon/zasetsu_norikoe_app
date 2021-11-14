@@ -214,6 +214,7 @@ resource "aws_ecs_task_definition" "main" {
   requires_compatibilities = ["FARGATE"]
   container_definitions    = file("./container_definitions.json")
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
+  task_role_arn = module.ecs_exec_ssm_agent_role.iam_role_arn
 }
 
 # ALB Target Group
@@ -232,7 +233,7 @@ resource "aws_lb_target_group" "main" {
     unhealthy_threshold = 2
     timeout             = 5
     interval            = 30
-    matcher             = "200,201,302"
+    matcher             = "200,201,302,401"
     port                = "traffic-port"
     protocol            = "HTTP"
   }
@@ -348,12 +349,31 @@ data "aws_iam_policy_document" "ecs_task_execution" {
     resources = ["*"]
   }
 }
+data "aws_iam_policy_document" "ecs_exec_ssm_agent" {
+ statement {
+    effect    = "Allow"
+    actions   = [
+      "ssmmessages:CreateControlChannel",
+      "ssmmessages:CreateDataChannel",
+      "ssmmessages:OpenControlChannel",
+      "ssmmessages:OpenDataChannel"
+      ]
+    resources = ["*"]
+  }
+}
 
 module "ecs_task_execution_role" {
   source     = "./iam_role"
   name       = "ecs_task_execution"
   identifier = "ecs-tasks.amazonaws.com"
   policy     = data.aws_iam_policy_document.ecs_task_execution.json
+}
+
+module "ecs_exec_ssm_agent_role" {
+  source     = "./iam_role"
+  name       = "ecs_exec_ssm_agent"
+  identifier = "ecs-tasks.amazonaws.com"
+  policy     = data.aws_iam_policy_document.ecs_exec_ssm_agent.json
 }
 
 # RDS

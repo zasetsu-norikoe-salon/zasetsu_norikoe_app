@@ -48,7 +48,7 @@
     "command": [
       "bash",
       "-c",
-      "bundle exec rails db:migrate && bundle exec rails assets:precompile && bundle exec pumactl start && bundle exec puma -C config/puma.rb"
+      "bundle exec rails db:migrate && bundle exec rails assets:precompile && bundle exec pumactl start && bundle exec puma -C config/puma.rb && bundle exec rails db:seed"
     ],
     "workingDirectory": "/zasetsu_norikoe_app",
     "essential": true
